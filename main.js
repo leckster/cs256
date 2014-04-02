@@ -26,6 +26,23 @@ var MUSCLE_GROUPS = [
 		]
 	},
 	{
+		name: "Hips",
+		exercises: [
+		{
+			name: "Seated Hip Abductors"
+		},
+		{
+			name: "Seated Hip Aductors"
+		},
+		{
+			name: "Standing Hip Aductors"
+		},
+		{
+			name: "Standing Hip Abductors"
+		}
+		]
+	},
+	{
 		name: "Biceps",
 		exercises: [
 		{
