@@ -195,28 +195,43 @@ var MUSCLE_GROUPS = [
 		name: "Chest",
 		exercises: [
 		{
-			name: ""
+			name: "Dumbell Chest Press"
 		},
 		{
-			name: ""
+			name: "Dumbell Incline Press"
 		},
 		{
-			name: ""
+			name: "Dumbell Decline Press"
 		},
 		{
-			name: ""
+			name: "Barbell Chest Press"
 		},
 		{
-			name: ""
+			name: "Barbell Incline Press"
 		},
 		{
-			name: ""
+			name: "Barbell Decline Press"
 		},
 		{
-			name: ""
+			name: "Dumbell Flies"
 		},
 		{
-			name: ""
+			name: "Dumbell Incline Flies"
+		},
+		{
+			name: "Dumbell Decline Flies"
+		},
+		{
+			name: "Fly Machine"
+		},
+		{
+			name: "Chest Press Machine"
+		},
+		{
+			name: "Push ups"
+		},
+		{
+			name: "Cable Flies"
 		}
 		]
 	},
@@ -224,10 +239,34 @@ var MUSCLE_GROUPS = [
 		name: "Shoulders",
 		exercises: [
 		{
-			name: ""
+			name: "Dumbell Side Raises"
 		},
 		{
-			name: ""
+			name: "Dumbell Front Raises"
+		},
+		{
+			name: "Dumbell Shoulder Press"
+		},
+		{
+			name: "Plate Front Raises"
+		},
+		{
+			name: "Shrugs"
+		},
+		{
+			name: "Seated Barbell Shoulder Press"
+		},
+		{
+			name: "Standing Barbell Shoulder Press"
+		},
+		{
+			name: "Arnold Press"
+		},
+		{
+			name: "Handstand Pushups"
+		},
+		{
+			name: "Military Press Machine"
 		}
 		]
 	}
