@@ -1,0 +1,142 @@
+.arrow-right {
+	border-top: 10px solid transparent;
+	border-bottom: 10px solid transparent;	
+	border-left: 20px solid rgb(189, 14, 14);
+	float: left;
+	margin: 10px 15px 0px 8px;
+}
+
+.remove {
+	width: 20px;
+	color: rgb(231, 47, 47);
+	font-size: 16pt;
+	font-weight: bold;
+	margin-right: 5px;
+	float: right;
+}
+
+.form-item {
+	margin: 30px 15px;
+}
+
+.form-tag {
+	width: 24%;
+	text-align: right;
+	padding: 7px 10px 0px 0px;
+	padding-right: 10px;
+	float: left;
+	vertical-align: middle;
+}
+
+/* index.html */
+#header {
+
+}
+
+#title {
+
+}
+
+#logo {
+
+}
+
+#content {
+
+}
+
+/* register.html */
+#registration-buttons {
+	text-align: right;
+}
+
+.submit-btn {
+	margin: 0px 10px;
+	width: 30%
+}
+
+/* main.html */
+#main-buttons {
+	width: 60%;
+	margin: 30px auto;
+	text-align: center;
+}
+
+.main-btn {
+	width: 80%;
+	margin: 10px 0px;
+	height: 70px;
+}	
+
+/* log.html */
+.exercise-main, .exercise-set {
+	background-color: black;
+	height:40px;
+	line-height: 40px;
+}
+
+.exercise-name, .set-number, .mini-title, .reps, .weight {
+	float: left;
+	color: whitesmoke;
+}
+
+.logging-area {
+	background-color: lightgrey;
+	text-align: center;
+}
+
+.exercise-set {
+	background-color: grey;
+	width: 85%;
+	float: right;
+	border: 1px black solid;
+	border-top: 0px;
+}
+
+.set-number {
+	margin: 0px 80px 0px 15px;
+}
+
+.log-section {
+	width: 25%;
+	float: left;
+}
+
+.mini-title {
+	margin-right: 20px;
+}
+
+.scroll-wheels {
+	float: right;
+	height: 75px;
+	width: 85%;
+}
+
+.scroll-wrapper {
+	float: right;
+	margin-right: 140px;
+}
+
+.scroll-wheel {
+	color: white;
+	width: 50px;
+	height: 50px;
+	line-height: 50px;
+	float: left;
+	background-color: maroon;
+	margin: 15px 0px 0px 100px;
+	border-radius: 30px;
+}
+
+.scroll-wheel.scroll-wheel-weight {
+	width: 80px;
+}
+
+.logging-buttons {
+	width: 100%;
+}
+
+.logging-btn {
+	width: 25%;
+	margin: 10px 10px 15px 10px;
+}
