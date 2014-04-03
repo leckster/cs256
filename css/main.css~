@@ -164,7 +164,7 @@ body {
 }
 
 /* Coach Student View */
-.class-time {
+ {
 	float: left;
 	margin-left: 20px;
 }

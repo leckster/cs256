@@ -1,0 +1,135 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">		
+	</head>
+	<body>	
+		<!-- Exercise logging/planning page -->	
+		<div class="exercise-main">
+			<div class="arrow-right"></div>
+			<div class="exercise-name">Exercise Name</div>
+			<div class="remove">X</div>
+		</div>
+		<div class="exercise-main-remove">
+			<div class="arrow-right"></div>
+			<div class="exercise-name">Exercise Name</div>
+			<div class="remove-buttons-wrapper">
+				<button class="btn btn-danger remove-btn">Remove</button>
+				<button class="btn btn-danger cancel-btn">Cancel</button>
+			</div>
+		</div>
+		<div class="exercise-main-current">
+			<div class="arrow-down"></div>
+			<div class="exercise-name">Exercise Name</div>
+			<div class="remove">X</div>
+		</div>
+		<div class="exercise-main-current-remove">
+			<div class="arrow-down"></div>
+			<div class="exercise-name">Exercise Name</div>
+			<div class="remove-buttons-wrapper">
+				<button class="btn btn-danger remove-btn">Remove</button>
+				<button class="btn btn-danger cancel-btn">Cancel</button>
+			</div>
+		</div>
+		<div class="logging-area">
+			<div class="exercise-set">
+				<div class="set-number">Set 1</div>
+				<div class="log-section">
+					<div class="mini-title">Reps:</div>
+					<div class="reps">10</div>
+				</div>
+				<div class="log-section">
+					<div class="mini-title">Weight:</div>
+					<div class="weight">155</div>
+				</div>
+				<div class="remove">X</div>			
+			</div>
+			<div class="exercise-set-remove">
+				<div class="set-number">Set 2</div>
+				<div class="log-section">
+					<div class="mini-title">Reps:</div>
+					<div class="reps">____</div>
+				</div>
+				<div class="log-section">
+					<div class="mini-title">Weight:</div>
+					<div class="weight">____</div>
+				</div>
+				<div class="remove-buttons-wrapper">
+					<button class="btn btn-danger remove-btn">Remove</button>
+					<button class="btn btn-danger cancel-btn">Cancel</button>
+				</div>	
+			</div>
+			<div class="scroll-wheels">
+				<div class="scroll-wrapper">
+					<div class="scroll-wheel scroll-wheel-reps">10</div>
+					<div class="scroll-wheel scroll-wheel-weight">155</div>
+				</div>
+			</div>
+			<div class="logging-buttons-wrapper">
+				<button class="btn btn-lg btn-danger logging-btn">Too Light</button>
+				<button class="btn btn-lg btn-danger logging-btn">Just Right</button>
+				<button class="btn btn-lg btn-danger logging-btn">Too Heavy</button>
+			</div>
+			<!-- Normally this will be under the last recorded set -->
+			<div id="add-new-set-container">
+				<div class="btn btn-lg btn-danger new-set-btn">New Set</div>
+			</div>
+		</div>			
+		<div id="add-exercise">
+			Add Exercise...
+		</div>
+		<div id="workout-complete-wrapper">
+				<button class="btn btn-lg btn-danger" id="workout-complete-btn">Workout Complete</button>		
+		</div>
+		
+		<!-- Coach View Student Profiles -->
+		<div class="class-wrapper">
+			<div class="class-section">Section 1</div>
+			<div class="class-time">(MWF 7:00 - 8:00)</div>			
+			<img class="nav-arrow-right" src="img/nav-arrow.png"/>
+		</div>
+		<div class="student-wrapper">
+			<div class="student-name">First Name Last Name</div>			
+			<img class="nav-arrow-right" src="img/nav-arrow.png"/>
+		</div>				
+		
+		<!-- Add an Exercise -->
+		<div class="muscle-group">
+			<div class="muscle-group-name">Muscle Group</div>
+			<img class="nav-arrow-right" src="img/nav-arrow.png"/>
+		</div>
+		<div class="exercise">
+			<img class="video-link" src="img/video-link.png"/>
+			<div class="exercise-name">Exercise Name</div>
+			<img class="nav-arrow-right" src="img/nav-arrow.png"/>
+		</div>				
+		
+		<!-- Loading a workout -->
+		<div class="exercise-main">
+			<div class="arrow-right"></div>
+			<div class="workout-name">Workout Name</div>
+			<div class-"workout-description">Description</div>
+		</div>
+		<div class="exercise-main-current">
+			<div class="arrow-down"></div>
+			<div class="workout-name">Workout Name</div>
+			<div class-"workout-description">Description</div>
+		</div>
+		<div class="workout-detail">
+			<div class="exercise-detail-name">Exercise Name</div>
+			<div class="log-section">
+				<div class="mini-title">Sets:</div>
+				<div class="sets">5</div>
+			</div>
+			<div class="log-section">
+				<div class="mini-title">Reps:</div>
+				<div class="reps">10</div>
+			</div>
+		</div>
+		<div id="load-wrapper">
+				<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>		
+		</div>
+	</body>
+</html>

@@ -1,7 +1,9 @@
 <!-- Main Page -->
 <html>
 	<head>
+		
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css">
 		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
 		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
 		<link rel="stylesheet" type="text/css" href="css/main.css">		
