@@ -287,5 +287,154 @@ var MUSCLE_GROUPS = [
 		}
 		]
 	}
-};
+];
 
+var test_workouts = [
+	{
+		name: "Workout 1",
+		description: "first test workout in the system. Use this to test the profile page.",
+		planOnly: false,
+		exercises: [
+			{
+				mg_index: 4,
+				e_index: 3,
+				sets: [
+					{
+						weight: 80,
+						rep:12,
+						status: "Too Easy"
+					},
+					{
+						weight: 90,
+						rep:10,
+						status: "Just Right"
+					},
+					{
+						weight: 90,
+						rep:8,
+						status: "Just Right"
+					},
+				]
+			},
+			{
+				mg_index: 1,
+				e_index: 1,
+				sets: [
+					{
+						weight: 40,
+						rep:15,
+						status: "Too Hard"
+					},
+					{
+						weight: 30,
+						rep:10,
+						status: "Too Easy"
+					},
+					{
+						weight: 35,
+						rep:10,
+						status: "Just Right"
+					},
+				]
+			}
+		]
+	},
+	{
+		name: "Workout 2",
+		description: "second test workout in the system. Use this to test the profile page.",
+		planOnly: false,
+		exercises: [
+			{
+				mg_index: 4,
+				e_index: 3,
+				sets: [
+					{
+						weight: 80,
+						rep:12,
+						status: "Too Easy"
+					},
+					{
+						weight: 90,
+						rep:10,
+						status: "Just Right"
+					},
+					{
+						weight: 90,
+						rep:8,
+						status: "Just Right"
+					},
+				]
+			},
+			{
+				mg_index: 1,
+				e_index: 1,
+				sets: [
+					{
+						weight: 40,
+						rep:15,
+						status: "Too Hard"
+					},
+					{
+						weight: 30,
+						rep:10,
+						status: "Too Easy"
+					},
+					{
+						weight: 35,
+						rep:10,
+						status: "Just Right"
+					},
+				]
+			}
+		]
+	},
+	{
+		name: "Workout 3",
+		description: "Third test workout in the system. This should not show up in the profile page because it is only a plan.",
+		planOnly: true,
+		exercises: [
+			{
+				mg_index: 4,
+				e_index: 3,
+				sets: [
+					{
+						weight: 80,
+						rep:12,
+						status: ""
+					},
+					{
+						weight: 90,
+						rep:10,
+						status: ""
+					},
+					{
+						weight: 90,
+						rep:8,
+						status: ""
+					},
+				]
+			},
+			{
+				mg_index: 1,
+				e_index: 1,
+				sets: [
+					{
+						weight: 40,
+						rep:15,
+						status: ""
+					},
+					{
+						weight: 30,
+						rep:10,
+						status: ""
+					},
+					{
+						weight: 35,
+						rep:10,
+						status: ""
+					},
+				]
+			}
+		]
+	}
+];
