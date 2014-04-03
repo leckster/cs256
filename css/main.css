@@ -1,17 +1,25 @@
 body {
 	background-color: rgb(235, 235, 235);	
+	min-width: 768px;
 }
 
 #header {
-
+	width: 100%;
+	height: 75px;
+	line-height: 75px;
+	text-align: center;
+	border: 1px black solid;
 }
 
 #title {
-
+	float: left;
+	width: 75%;
 }
 
 #logo {
-
+	float: left;
+	border-left:1px black solid;
+	width: 25%
 }
 
 #content {
