@@ -1,0 +1,11 @@
+<div class="workout-detail">
+			<div class="exercise-detail-name">Exercise Name</div>
+			<div class="log-section">
+				<div class="mini-title">Sets:</div>
+				<div class="sets">5</div>
+			</div>
+			<div class="log-section">
+				<div class="mini-title">Reps:</div>
+				<div class="reps">10</div>
+			</div>
+		</div>
