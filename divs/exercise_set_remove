@@ -1,0 +1,15 @@
+<div class="exercise-set-remove">
+				<div class="set-number">Set 2</div>
+				<div class="log-section">
+					<div class="mini-title">Reps:</div>
+					<div class="reps">____</div>
+				</div>
+				<div class="log-section">
+					<div class="mini-title">Weight:</div>
+					<div class="weight">____</div>
+				</div>
+				<div class="remove-buttons-wrapper">
+					<button class="btn btn-danger remove-btn">Remove</button>
+					<button class="btn btn-danger cancel-btn">Cancel</button>
+				</div>	
+			</div>

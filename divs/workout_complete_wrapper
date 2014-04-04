@@ -1,0 +1,3 @@
+<div id="workout-complete-wrapper">
+				<button class="btn btn-lg btn-danger" id="workout-complete-btn">Workout Complete</button>		
+		</div>
