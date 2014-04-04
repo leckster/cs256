@@ -439,9 +439,16 @@ var test_workouts = [
 	}
 ];
 
-var current_exercise_settings = {
-	planningMode : false
-}
+var current_workout = {
+	name: "New Workout",
+	description: "",
+	planOnly: false,
+	exercises: []
+};
+
+var current_exercise = {};
+
+var workouts = [];
 
 window.onload = init;
 
@@ -468,18 +475,18 @@ function main_start_workout() {
 	("0" + m.getUTCHours()).slice(-2) + ":" +
 	("0" + m.getUTCMinutes()).slice(-2);
 
-	current_exercise_settings.date = dateString;
+	current_workout.date = dateString;
 	$("#content").load("log.html");
-	$("#title").html("<div class='title-top'>Date: " + current_exercise_settings.date + "</div>"
-		+"<div class='title-bottom'><span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
+	$("#title").html("<div class='title-top'>Date: " + current_workout.date + "</div>"
+		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
 }
 
 function main_load_workout() {
-	console.log("DANE!!!");
+
 }
 
 function main_view_profile() {
-	console.log("SYDNEY");
+
 }
 
 function main_logout() {
@@ -495,10 +502,51 @@ function main_logout() {
 
 function log_add_exercise() {
 	console.log("add exercises");
-	
+	$("#popover").html(getMuscleGroupsHTML());
+	$("#popover").removeClass("hidden");
+	$("#content").addClass("hidden");
+
 }
 
+function selectMuscleGroup(mg_index) {
+	current_exercise.mg_index = mg_index;
 
+	$("#popover").html(getExercisesHTML(mg_index));
+}
+
+function selectExercise(e_index) {
+	current_exercise.e_index = e_index;
+
+	$("#popover").addClass("hidden");
+	$("#content").removeClass("hidden");
+
+	//TODO: show the first set selector with reps and sets.
+}
+
+function getMuscleGroupsHTML() {
+	var html = "";
+	for( var i = 0; i < MUSCLE_GROUPS.length; i++){
+		var muscle_group = MUSCLE_GROUPS[i];
+		html += '<div class="muscle-group" onclick="selectMuscleGroup(' + i + ')">'
+			+'<div class="muscle-group-name">' + muscle_group.name + '</div>'
+			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
+		+'</div>';
+	}
+	return html;
+}
+
+function getExercisesHTML(mg_index) {
+	var html = "";
+	for( var i = 0; i < MUSCLE_GROUPS[mg_index].exercises.length; i++){
+		var exercise = MUSCLE_GROUPS[mg_index].exercises[i];
+		html += '<div class="exercise" onclick="selectExercise(' + i + ')">'
+			+'<img class="video-link" src="img/video-link.png">'
+			+'<div class="exercise-name">' + exercise.name + '</div>'
+			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
+		+'</div>';
+	}
+	return html;
+}
 
 //
 // PLAN WOKROUT

@@ -27,6 +27,8 @@ body {
 #title .title-bottom {
 	height: 50%;
 	line-height: 36px;
+	text-align: left;
+	padding-left: 16px;
 }
 
 .planning-mode {
