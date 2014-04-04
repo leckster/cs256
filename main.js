@@ -439,6 +439,10 @@ var test_workouts = [
 	}
 ];
 
+var current_exercise_settings = {
+	planningMode : false
+}
+
 window.onload = init;
 
 function init()
@@ -455,9 +459,19 @@ function init()
 
 function main_start_workout() {
 	console.log("start workout");
+	
+	var m = new Date();
+	var dateString =
+	m.getUTCFullYear() +"/"+
+	("0" + (m.getUTCMonth()+1)).slice(-2) +"/"+
+	("0" + m.getUTCDate()).slice(-2) + " " +
+	("0" + m.getUTCHours()).slice(-2) + ":" +
+	("0" + m.getUTCMinutes()).slice(-2);
+
+	current_exercise_settings.date = dateString;
 	$("#content").load("log.html");
-	//load header
-	$("#title").html("<div></div>");
+	$("#title").html("<div class='title-top'>Date: " + current_exercise_settings.date + "</div>"
+		+"<div class='title-bottom'><span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
 }
 
 function main_load_workout() {
@@ -481,6 +495,7 @@ function main_logout() {
 
 function log_add_exercise() {
 	console.log("add exercises");
+	
 }
 
 
