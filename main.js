@@ -438,3 +438,54 @@ var test_workouts = [
 		]
 	}
 ];
+
+window.onload = init;
+
+function init()
+{
+	//ajax for main.html
+	$("#content").load("main.html");
+}
+
+
+
+//
+// MAIN FUNCTIONS
+//
+
+function main_start_workout() {
+	console.log("start workout");
+	$("#content").load("log.html");
+	//load header
+	$("#title").html("<div></div>");
+}
+
+function main_load_workout() {
+	console.log("DANE!!!");
+}
+
+function main_view_profile() {
+	console.log("SYDNEY");
+}
+
+function main_logout() {
+
+}
+
+
+
+
+//
+// LOG WORKOUT
+//
+
+function log_add_exercise() {
+	console.log("add exercises");
+}
+
+
+
+//
+// PLAN WOKROUT
+//
+

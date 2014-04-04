@@ -70,7 +70,7 @@ body {
 .exercise-main-current, .exercise-main-current-remove, 
 #add-exercise, .muscle-group, .exercise,
 .workout-detail, .student-wrapper, .class-wrapper {
-	background-color: grey;
+	background-color: gray;
 	height:40px;
 	line-height: 40px;
 	border-bottom: 1px black solid;
