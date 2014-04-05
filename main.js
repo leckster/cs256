@@ -448,6 +448,8 @@ var current_workout = {
 
 var current_exercise = {};
 
+var current_exercise_index = 0;
+
 var workouts = [];
 
 window.onload = init;
@@ -465,7 +467,6 @@ function init()
 //
 
 function main_start_workout() {
-	console.log("start workout");
 	
 	var m = new Date();
 	var dateString =
@@ -494,8 +495,6 @@ function main_logout() {
 }
 
 
-
-
 //
 // LOG WORKOUT
 //
@@ -515,12 +514,94 @@ function selectMuscleGroup(mg_index) {
 }
 
 function selectExercise(e_index) {
+	current_exercise_index = current_workout.exercises.length;
+
 	current_exercise.e_index = e_index;
+	current_exercise.sets = [];
+	current_workout.exercises.push(current_exercise);
+	current_exercise = {};
 
 	$("#popover").addClass("hidden");
 	$("#content").removeClass("hidden");
 
+	render_exercises();
+	add_set_for_exercise(current_workout.exercises.length - 1);
+
 	//TODO: show the first set selector with reps and sets.
+}
+
+function render_exercises() {
+	var html = '';
+	for( var i = 0; i < current_workout.exercises.length; i++) {
+		var exercise = current_workout.exercises[i];
+		html += '<div id="exercise_' + i + '" class="exercise-main">'
+			+'<div class="arrow-right"></div>'
+			+'<div class="exercise-name">' + MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
+			+'<div class="remove">X</div>'
+		+'</div>';
+	}
+	$("#content").html(html);
+}
+
+function render_sets(index) {
+	var html = '';
+	for( var i = 0; i < current_workout.exercises[index].sets.length; i++) {
+		var set = current_workout.exercises[index].sets[i];
+		html += '<div class="exercise-set">'
+			+ '<div class="set-number">Set ' + (i+1) +'</div>'
+			+ '<div class="log-section">'
+				+ '<div class="mini-title">Reps:</div>'
+				+ '<div class="reps">' + set.reps + '</div>'
+			+ '</div>'
+			+ '<div class="log-section">'
+				+ '<div class="mini-title">Weight:</div>'
+				+ '<div class="weight">' + set.weight + '</div>'
+			+ '</div>'
+			+ '<div class="log-section">'
+				+ '<div class="status">' + set.status + '</div>'
+			+ '</div>'
+			+ '<div class="remove">X</div>			'
+		+ '</div>';
+	};
+	return html;
+}
+
+function add_set_for_exercise(index) {
+	$(".logging-area").remove();
+	$("#exercise_"+index).removeClass("exercise-main").addClass("exercise-main-current").find("div.arrow-right").removeClass("arrow-right").addClass("arrow-down");
+	$("#exercise_"+index).after("<div class='logging-area'></div>");
+	$(".logging-area").load("divs/logging_area", null, function(){
+		var html = render_sets(index);
+		html += '<div class="exercise-set">'
+			+ '<div class="set-number">Set ' + (current_workout.exercises[index].sets.length+1) +'</div>'
+			+ '<div class="log-section">'
+				+ '<div class="mini-title">Reps:</div>'
+				+ '<div class="reps">____</div>'
+			+ '</div>'
+			+ '<div class="log-section">'
+				+ '<div class="mini-title">Weight:</div>'
+				+ '<div class="weight">____</div>'
+			+ '</div>'
+			+ '<div class="remove">X</div>			'
+		+ '</div>';
+		$(".exercise-set-wrapper").html(html);
+	});
+
+}
+
+function add_set(status) {
+	var new_set = {};
+	new_set.reps = 10;//get reps from selector
+	new_set.weight = 80;//get weight from selector
+	new_set.status = status;
+
+	current_workout.exercises[current_exercise_index].sets.push(new_set);
+
+	$(".logging-area").html('<div class="exercise-set-wrapper">'
+		+'</div><div id="add-new-set-container">'
+			+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
+		+'</div>');
+	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 }
 
 function getMuscleGroupsHTML() {

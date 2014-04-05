@@ -55,9 +55,9 @@ body {
 }
 
 .arrow-down {
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;	
-	border-left: 20px solid rgb(189, 14, 14);
+	border-top: 20px solid rgb(189, 14, 14);
+	border-right: 10px solid transparent;
+	border-left: 10px solid transparent;
 	float: left;
 	margin: 10px 15px 0px 8px;
 }
@@ -124,7 +124,7 @@ body {
 }
 
 .log-section {
-	width: 25%;
+	width: 20%;
 	float: left;
 }
 
