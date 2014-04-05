@@ -568,6 +568,8 @@ function render_sets(index) {
 
 function add_set_for_exercise(index) {
 	$(".logging-area").remove();
+	$("#add-exercise").remove();
+	
 	$("#exercise_"+index).removeClass("exercise-main").addClass("exercise-main-current").find("div.arrow-right").removeClass("arrow-right").addClass("arrow-down");
 	$("#exercise_"+index).after("<div class='logging-area'></div>");
 	$(".logging-area").load("divs/logging_area", null, function(){
@@ -601,6 +603,7 @@ function add_set(status) {
 		+'</div><div id="add-new-set-container">'
 			+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
 		+'</div>');
+	$(".logging-area").after('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 }
 
