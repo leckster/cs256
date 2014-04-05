@@ -630,8 +630,8 @@ function add_set(status) {
 	isAddingSet = false;
 
 	var new_set = {};
-	new_set.reps = 10;//get reps from selector
-	new_set.weight = 80;//get weight from selector
+	new_set.reps = 10;//get reps from selector !!!!JARED!!!!
+	new_set.weight = 80;//get weight from selector !!!!JARED!!!!
 	new_set.status = status;
 
 	current_workout.exercises[current_exercise_index].sets.push(new_set);
