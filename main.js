@@ -553,11 +553,11 @@ function render_sets(index) {
 			+ '<div class="set-number">Set ' + (i+1) +'</div>'
 			+ '<div class="log-section">'
 				+ '<div class="mini-title">Reps:</div>'
-				+ '<div class="reps">' + set.reps + '</div>'
+				+ '<div class="reps">' + set.reps + '</div>' // JARED
 			+ '</div>'
 			+ '<div class="log-section">'
 				+ '<div class="mini-title">Weight:</div>'
-				+ '<div class="weight">' + set.weight + '</div>'
+				+ '<div class="weight">' + set.weight + '</div>' // JARED
 			+ '</div>'
 			+ '<div class="log-section">'
 				+ '<div class="status">' + set.status + '</div>'
