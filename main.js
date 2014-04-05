@@ -450,6 +450,8 @@ var current_exercise = {};
 
 var current_exercise_index = 0;
 
+var isAddingSet = false;
+
 var workouts = [];
 
 window.onload = init;
@@ -535,7 +537,7 @@ function render_exercises() {
 	for( var i = 0; i < current_workout.exercises.length; i++) {
 		var exercise = current_workout.exercises[i];
 		html += '<div id="exercise_' + i + '" class="exercise-main">'
-			+'<div class="arrow-right"></div>'
+			+'<div class="arrow collapsed" onclick="toggle_exercise(' + i + ')"></div>'
 			+'<div class="exercise-name">' + MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
 			+'<div class="remove">X</div>'
 		+'</div>';
@@ -566,11 +568,44 @@ function render_sets(index) {
 	return html;
 }
 
+function toggle_exercise(index) {
+	$(".logging-area").remove();
+
+	var arrow = $("#exercise_"+index).find(".arrow");
+
+	if(arrow.hasClass("expanded")) {
+		$("#exercise_"+index).removeClass("exercise-main-current").addClass("exercise-main");
+		arrow.removeClass("expanded").addClass("collapsed");
+	} else {
+		current_exercise_index = index;
+		$(".exercise-main-current").addClass("exercise-main").removeClass("exercise-main-current");
+		$(".arrow").removeClass("expanded").addClass("collapsed");
+
+		$("#exercise_"+index).addClass("exercise-main-current");
+		arrow.removeClass("collapsed").addClass("expanded");
+
+		$("#exercise_"+index).after("<div class='logging-area'></div>");
+		$(".logging-area").html('<div class="exercise-set-wrapper clearfix">'
+			+'</div><div id="add-new-set-container">'
+				+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
+			+'</div>');
+		$(".exercise-set-wrapper").html(render_sets(index));
+	}
+
+	if(isAddingSet) {
+		isAddingSet = false;
+		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+	}
+
+}
+
 function add_set_for_exercise(index) {
+	isAddingSet = true;
+
 	$(".logging-area").remove();
 	$("#add-exercise").remove();
-	
-	$("#exercise_"+index).removeClass("exercise-main").addClass("exercise-main-current").find("div.arrow-right").removeClass("arrow-right").addClass("arrow-down");
+
+	$("#exercise_"+index).removeClass("exercise-main").addClass("exercise-main-current").find("div.arrow").removeClass("collapsed").addClass("expanded");
 	$("#exercise_"+index).after("<div class='logging-area'></div>");
 	$(".logging-area").load("divs/logging_area", null, function(){
 		var html = render_sets(index);
@@ -592,6 +627,8 @@ function add_set_for_exercise(index) {
 }
 
 function add_set(status) {
+	isAddingSet = false;
+
 	var new_set = {};
 	new_set.reps = 10;//get reps from selector
 	new_set.weight = 80;//get weight from selector
@@ -599,11 +636,11 @@ function add_set(status) {
 
 	current_workout.exercises[current_exercise_index].sets.push(new_set);
 
-	$(".logging-area").html('<div class="exercise-set-wrapper">'
+	$(".logging-area").html('<div class="exercise-set-wrapper clearfix">'
 		+'</div><div id="add-new-set-container">'
 			+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
 		+'</div>');
-	$(".logging-area").after('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+	$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 }
 
