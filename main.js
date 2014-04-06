@@ -536,10 +536,10 @@ function render_exercises() {
 	var html = '';
 	for( var i = 0; i < current_workout.exercises.length; i++) {
 		var exercise = current_workout.exercises[i];
-		html += '<div id="exercise_' + i + '" class="exercise-main">'
+		html += '<div id="exercise_' + i + '" class="exercise exercise-main" data-index="' + i + '">'
 			+'<div class="arrow collapsed" onclick="toggle_exercise(' + i + ')"></div>'
 			+'<div class="exercise-name">' + MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
-			+'<div class="remove">X</div>'
+			+'<div class="remove" onclick="show_remove_options(this)">X</div>'
 		+'</div>';
 	}
 	$("#content").html(html);
@@ -549,20 +549,20 @@ function render_sets(index) {
 	var html = '';
 	for( var i = 0; i < current_workout.exercises[index].sets.length; i++) {
 		var set = current_workout.exercises[index].sets[i];
-		html += '<div class="exercise-set">'
+		html += '<div class="exercise-set" data-index="' + i + '">'
 			+ '<div class="set-number">Set ' + (i+1) +'</div>'
 			+ '<div class="log-section">'
 				+ '<div class="mini-title">Reps:</div>'
-				+ '<div class="reps">' + set.reps + '</div>' // JARED
+				+ '<div class="reps">' + set.reps + '</div>'
 			+ '</div>'
 			+ '<div class="log-section">'
 				+ '<div class="mini-title">Weight:</div>'
-				+ '<div class="weight">' + set.weight + '</div>' // JARED
+				+ '<div class="weight">' + set.weight + '</div>'
 			+ '</div>'
 			+ '<div class="log-section">'
 				+ '<div class="status">' + set.status + '</div>'
 			+ '</div>'
-			+ '<div class="remove">X</div>			'
+			+ '<div class="remove" onclick="show_remove_options(this)">X</div>			'
 		+ '</div>';
 	};
 	return html;
@@ -596,7 +596,57 @@ function toggle_exercise(index) {
 		isAddingSet = false;
 		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	}
+}
 
+function show_remove_options(context) {
+
+	$(".remove-buttons-wrapper").after('<div class="remove" onclick="show_remove_options(this)"></div>');
+	$(".remove-buttons-wrapper").remove();
+	$(".remove").html("X");
+
+	$(context).after('<div class="remove-buttons-wrapper"></div>');
+	$(context).remove();
+	$(".remove-buttons-wrapper").html('<button class="btn btn-danger remove-btn" onclick="remove_row(this)">Remove</button>'
+		+'<button class="btn btn-danger cancel-btn" onclick="cancel_remove(this)">Cancel</button>');
+}
+
+function cancel_remove(context) {
+	console.log("cancel_remove");
+	$(".remove-buttons-wrapper").after('<div class="remove" onclick="show_remove_options(this)"></div>');
+	$(".remove-buttons-wrapper").remove();
+	$(".remove").html("X");
+}
+
+function remove_row(context) {
+	console.log("remove_row");
+ 	var row = $(context).parent().parent()
+	if(row.hasClass("exercise")) {
+		var index = row.data("index");
+		if( index == current_exercise_index) {
+			current_exercise_index = 0;
+		}
+		current_workout.exercises.splice(index, 1);
+
+		render_exercises();
+
+		isAddingSet = false;
+		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+
+	} else {
+		var index = row.data("index");
+		if( index >= 0) {
+			current_workout.exercises[current_exercise_index].sets.splice(index, 1);
+		}
+		$(".logging-area").html('<div class="exercise-set-wrapper clearfix">'
+			+'</div><div id="add-new-set-container">'
+				+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
+			+'</div>');
+		if(isAddingSet){
+			isAddingSet = false;
+			$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+		}
+		$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
+	}
 }
 
 function add_set_for_exercise(index) {
@@ -607,22 +657,36 @@ function add_set_for_exercise(index) {
 
 	$("#exercise_"+index).removeClass("exercise-main").addClass("exercise-main-current").find("div.arrow").removeClass("collapsed").addClass("expanded");
 	$("#exercise_"+index).after("<div class='logging-area'></div>");
-	$(".logging-area").load("divs/logging_area", null, function(){
-		var html = render_sets(index);
-		html += '<div class="exercise-set">'
-			+ '<div class="set-number">Set ' + (current_workout.exercises[index].sets.length+1) +'</div>'
-			+ '<div class="log-section">'
-				+ '<div class="mini-title">Reps:</div>'
-				+ '<div class="reps">____</div>'
-			+ '</div>'
-			+ '<div class="log-section">'
-				+ '<div class="mini-title">Weight:</div>'
-				+ '<div class="weight">____</div>'
-			+ '</div>'
-			+ '<div class="remove">X</div>			'
-		+ '</div>';
-		$(".exercise-set-wrapper").html(html);
-	});
+	$(".logging-area").html('<div class="exercise-set-wrapper clearfix">'
+		+ '</div>'
+		+ '<div class="scroll-wheels">'
+			+ '<div class="scroll-wrapper">'
+				+'<div class="scroll-wheel scroll-wheel-reps">10</div>'
+				+'<div class="scroll-wheel scroll-wheel-weight">155</div>'
+			+'</div>'
+		+'</div>'
+		+'<div class="logging-buttons-wrapper">'
+			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Light\')">Too Light</button>'
+			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Just Right\')">Just Right</button>'
+			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Heavy\')">Too Heavy</button>'
+		+ '</div>');
+		
+		$("#scroll-wrapper).load("Selectors.html");
+
+	var html = render_sets(index);
+	html += '<div class="exercise-set">'
+		+ '<div class="set-number">Set ' + (current_workout.exercises[index].sets.length+1) +'</div>'
+		+ '<div class="log-section">'
+			+ '<div class="mini-title">Reps:</div>'
+			+ '<div class="reps">____</div>'
+		+ '</div>'
+		+ '<div class="log-section">'
+			+ '<div class="mini-title">Weight:</div>'
+			+ '<div class="weight">____</div>'
+		+ '</div>'
+		+ '<div class="remove" onclick="show_remove_options(this)">X</div>			'
+	+ '</div>';
+	$(".exercise-set-wrapper").html(html);
 
 }
 
@@ -630,8 +694,8 @@ function add_set(status) {
 	isAddingSet = false;
 
 	var new_set = {};
-	new_set.reps = 10;//get reps from selector !!!!JARED!!!!
-	new_set.weight = 80;//get weight from selector !!!!JARED!!!!
+	new_set.reps =  $('#reps').find(":selected").text();
+	new_set.weight =  $('#weight').find(":selected").text();
 	new_set.status = status;
 
 	current_workout.exercises[current_exercise_index].sets.push(new_set);
