@@ -660,10 +660,7 @@ function add_set_for_exercise(index) {
 	$(".logging-area").html('<div class="exercise-set-wrapper clearfix">'
 		+ '</div>'
 		+ '<div class="scroll-wheels">'
-			+ '<div class="scroll-wrapper">'
-				+'<div class="scroll-wheel scroll-wheel-reps">10</div>'
-				+'<div class="scroll-wheel scroll-wheel-weight">155</div>'
-			+'</div>'
+			+ '<div class="scroll-wrapper"></div>'
 		+'</div>'
 		+'<div class="logging-buttons-wrapper">'
 			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Light\')">Too Light</button>'
@@ -671,7 +668,10 @@ function add_set_for_exercise(index) {
 			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Heavy\')">Too Heavy</button>'
 		+ '</div>');
 		
-		$("#scroll-wrapper").load("Selectors.html");
+		$(".scroll-wrapper").load("divs/selectors", null, function(){
+			$('#reps').iPhonePicker({ width: '80px', imgRoot: 'images/' });
+			$('#weights').iPhonePicker({ width: '80px', imgRoot: 'images/' });			
+		});
 
 	var html = render_sets(index);
 	html += '<div class="exercise-set">'

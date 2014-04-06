@@ -330,3 +330,7 @@ body {
 .clearfix {
 	clear: both;
 }
+
+#uipv_main_reps {
+	margin: 0px 20px;
+}
