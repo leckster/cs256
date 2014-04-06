@@ -1,0 +1,74 @@
+<!-- Recording/Planning Page -->
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
+		<link rel="stylesheet" type="text/css" href="main.css">		
+	</head>
+	<body>
+        <div class="registration">
+			<form id="register-form" name="register-form" action="" method="get">
+				<div class="form-item">
+					<div class="form-tag">Muscle Group:</div>
+					<input id="muscle_group" class="form-control" type="text" placeholder="Username">
+				</div>
+				<div class="form-item">
+					<div class="form-tag">Creator Name:</div>
+					<input id="creator_name" class="form-control" type="text" placeholder="Creator Name">
+				</div>
+				<div class="form-item">
+					<div class="form-tag">Creation Date:</div>
+					<input id="creation_date" class="form-control" type="text" placeholder="Creation Date">
+				</div>
+				<div class="form-item">
+					<div class="form-tag">Exercises:</div>
+					<input id="exercise1" class="form-control" type="text" placeholder="Exercise Name">
+				</div>
+				<div class="form-item">
+					<div class="form-tag"></div>
+					<input id="exercise2" class="form-control" type="text" placeholder="Exercise Name">
+				</div>
+				<div id="registration-buttons" class="form-item">
+					<button id="cancel-registration" class="btn btn-lg btn-danger submit-btn">Cancel</button>
+					<button id="finish-registration" class="btn btn-lg btn-danger submit-btn">Search</button>
+				</div>
+			</form>
+		</div>
+		<div id="exercise-block">
+			<div class="exercise-main">
+				<div class="arrow-right"></div>
+				<div class="exercise-name">Exercise Name</div>
+			</div>
+			<div class="logging-area">
+				<div class="exercise-set">
+					<div class="set-number">Set 1</div>
+					<div class="log-section">
+						<div class="mini-title">Reps:</div>
+						<div class="reps">10</div>
+					</div>
+					<div class="log-section">
+						<div class="mini-title">Weight:</div>
+						<div class="weight">155</div>
+					</div>
+				</div>
+				<div class="exercise-set">
+					<div class="set-number">Set 2</div>
+					<div class="log-section">
+						<div class="mini-title">Reps:</div>
+						<div class="reps">30</div>
+					</div>
+					<div class="log-section">
+						<div class="mini-title">Weight:</div>
+						<div class="weight">120</div>
+					</div>	
+				</div>
+			</div>			
+		</div>
+        <div class="logging-buttons">
+					<button class="btn btn-lg btn-danger load-btn">Load</button>
+				</div>
+		<div id="add-exercise">
+		</div>
+	</body>
+</html>

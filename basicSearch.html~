@@ -1,0 +1,27 @@
+<!-- Main Page -->
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">		
+	</head>
+	<body>		
+        <div class="basic-search-wrapper">
+			<form id="basic-search-form" name="basic-search-form" action="" method="get">
+				<div id="search-input-wrapper">				
+					<div id="search-tag">Search Criteria Description</div>
+					<input class="form-control search-criteria" type="text" placeholder="Search Criteria">
+					<div class="search-plans-only">Only Search My Plans</div>
+					<a href="" class="advanced-search-link">Advanced Search..</a>
+				</div>
+				<div class="search-buttons-wrapper">
+					<button class="btn btn-lg btn-danger search-btn">Search</button>
+					<button class="btn btn-lg btn-danger cancel-search-btn">Cancel</button>
+				</div>
+			</form>
+		</div>
+      <div id="search-results">
+      </div>
+	</body>
+</html>
