@@ -317,3 +317,11 @@ body {
 	width: 100%;
 	margin: 10px 0px;
 }
+
+/* Fix for mis-aligned list items */
+#popover {
+	clear: left;
+	margin-top: -1px;
+	width: 100%;
+	display: inline-block;	
+}
