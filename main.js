@@ -536,7 +536,7 @@ function render_exercises() {
 	var html = '';
 	for( var i = 0; i < current_workout.exercises.length; i++) {
 		var exercise = current_workout.exercises[i];
-		html += '<div id="exercise_' + i + '" class="exercise exercise-main" data-index="' + i + '">'
+		html += '<div id="exercise_' + i + '" class="exercise exercise-main clearfix" data-index="' + i + '">'
 			+'<div class="arrow collapsed" onclick="toggle_exercise(' + i + ')"></div>'
 			+'<div class="exercise-name">' + MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
 			+'<div class="remove" onclick="show_remove_options(this)">X</div>'
