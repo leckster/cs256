@@ -671,7 +671,7 @@ function add_set_for_exercise(index) {
 			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Heavy\')">Too Heavy</button>'
 		+ '</div>');
 		
-		$("#scroll-wrapper).load("Selectors.html");
+		$("#scroll-wrapper").load("Selectors.html");
 
 	var html = render_sets(index);
 	html += '<div class="exercise-set">'
