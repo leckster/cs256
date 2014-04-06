@@ -1,0 +1,51 @@
+<!-- Main Page -->
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">		
+	</head>
+	<body>		
+        <div class="basic-search-wrapper">
+			<form id="basic-search-form" name="basic-search-form" action="" method="get">
+				<div id="search-input-wrapper">				
+					<div id="search-tag">Search Criteria Description</div>
+					<input class="form-control search-criteria" type="text" placeholder="Search Criteria">
+					<div class="search-plans-only">Only Search My Plans</div>
+					<a href="" class="advanced-search-link">Advanced Search..</a>
+				</div>
+				<div class="search-buttons-wrapper">
+					<button class="btn btn-lg btn-danger search-btn">Search</button>
+					<button class="btn btn-lg btn-danger cancel-search-btn">Cancel</button>
+				</div>
+			</form>
+		</div>
+      <div id="search-results">
+      	<div class="exercise-main">
+				<div class="arrow collapsed"></div>
+				<div class="workout-name">Workout Name</div>
+				<div class-"workout-description">Description</div>
+			</div>
+			<div class="exercise-main-current">
+				<div class="arrow expanded"></div>
+				<div class="workout-name">Workout Name</div>
+				<div class-"workout-description">Description</div>
+			</div>
+			<div class="workout-detail">
+				<div class="exercise-detail-name">Exercise Name</div>
+				<div class="log-section">
+					<div class="mini-title">Sets:</div>
+					<div class="sets">5</div>
+				</div>
+				<div class="log-section">
+					<div class="mini-title">Reps:</div>
+					<div class="reps">10</div>
+				</div>
+			</div>
+		<div id="load-wrapper">
+				<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>		
+		</div>
+      </div>
+	</body>
+</html>
