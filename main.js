@@ -670,6 +670,8 @@ function add_set_for_exercise(index) {
 			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Just Right\')">Just Right</button>'
 			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Heavy\')">Too Heavy</button>'
 		+ '</div>');
+		
+		$("#scroll-wrapper).load("Selectors.html");
 
 	var html = render_sets(index);
 	html += '<div class="exercise-set">'
@@ -692,8 +694,8 @@ function add_set(status) {
 	isAddingSet = false;
 
 	var new_set = {};
-	new_set.reps = 10;//get reps from selector
-	new_set.weight = 80;//get weight from selector
+	new_set.reps =  $('#reps').find(":selected").text();
+	new_set.weight =  $('#weight').find(":selected").text();
 	new_set.status = status;
 
 	current_workout.exercises[current_exercise_index].sets.push(new_set);
