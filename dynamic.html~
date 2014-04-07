@@ -8,12 +8,12 @@
 	<body>	
 		<!-- Exercise logging/planning page -->	
 		<div class="exercise-main">
-			<div class="arrow-right"></div>
+			<div class="arrow collapsed"></div>
 			<div class="exercise-name">Exercise Name</div>
 			<div class="remove">X</div>
 		</div>
 		<div class="exercise-main-remove">
-			<div class="arrow-right"></div>
+			<div class="arrow collapsed"></div>
 			<div class="exercise-name">Exercise Name</div>
 			<div class="remove-buttons-wrapper">
 				<button class="btn btn-danger remove-btn">Remove</button>
@@ -21,12 +21,12 @@
 			</div>
 		</div>
 		<div class="exercise-main-current">
-			<div class="arrow-down"></div>
+			<div class="arrow expanded"></div>
 			<div class="exercise-name">Exercise Name</div>
 			<div class="remove">X</div>
 		</div>
 		<div class="exercise-main-current-remove">
-			<div class="arrow-down"></div>
+			<div class="arrow expanded"></div>
 			<div class="exercise-name">Exercise Name</div>
 			<div class="remove-buttons-wrapper">
 				<button class="btn btn-danger remove-btn">Remove</button>
@@ -91,7 +91,7 @@
 			<img class="nav-arrow-right" src="img/nav-arrow.png"/>
 		</div>
 		<div class="student-wrapper">
-			<div class="student-name">First Name Last Name</div>			
+			<div class="student-name">Last Name, First Name</div>			
 			<img class="nav-arrow-right" src="img/nav-arrow.png"/>
 		</div>				
 		
@@ -108,12 +108,12 @@
 		
 		<!-- Loading a workout -->
 		<div class="exercise-main">
-			<div class="arrow-right"></div>
+			<div class="arrow collapsed"></div>
 			<div class="workout-name">Workout Name</div>
 			<div class-"workout-description">Description</div>
 		</div>
 		<div class="exercise-main-current">
-			<div class="arrow-down"></div>
+			<div class="arrow expanded"></div>
 			<div class="workout-name">Workout Name</div>
 			<div class-"workout-description">Description</div>
 		</div>
