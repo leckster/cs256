@@ -485,8 +485,55 @@ function main_start_workout() {
 		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
 }
 
-function main_view_profile() {
+function main_load_workout() {
+	$("#content").html(getSearchWorkoutsHTML());
+}
 
+function getSearchWorkoutsHTML() {
+	var html = "<div class="basic-search-wrapper">
+			<form id="basic-search-form" name="basic-search-form" action="" method="get">
+				<div id="search-input-wrapper">				
+					<div id="search-tag">Search Criteria Description</div>
+					<input class="form-control search-criteria" type="text" placeholder="Search Criteria">
+					<div class="search-plans-only">
+					<form action="">
+					<input type="checkbox" name="Only-Search-Mine" value="Only-Search-Mine">  Only Search My Plans<br>
+					</form></div>
+					<a href="" class="advanced-search-link">Advanced Search..</a>
+				</div>
+				<div class="search-buttons-wrapper">
+					<button class="btn btn-lg btn-danger search-btn">Search</button>
+					<button class="btn btn-lg btn-danger cancel-search-btn">Cancel</button>
+				</div>
+			</form>
+		</div>
+		<div id="search-results">";
+		
+	for( var i = 0; i < test_workouts.length; i++){
+		var workout = test_workouts[i];
+		html += '<div class="exercise-main">
+				div class="arrow expanded"></div>
+				<div class="workout-name">' + workout.name + '</div>
+				<div class-"workout-description">' + workout.description + '</div>
+				</div>
+			<div class="workout-detail">' ;
+		for( var j = 0; j < workout.length; j++){
+			var exercise = workout.exercises[j];
+			html += '<div class="exercise-detail-name">'+ MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>
+				<div class="log-section">
+					<div class="mini-title">Sets:</div>
+					<div class="sets">' + exercise.sets.length + ' </div>
+				</div>
+				<div class="log-section">
+					<div class="mini-title">Reps:</div>
+					<div class="reps">' + exercise.sets[0].rep + '</div>
+				</div>
+			</div>
+		<div id="load-wrapper">
+				<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>		
+		</div>")';
+	}
+	return html;
 }
 
 function main_logout() {
