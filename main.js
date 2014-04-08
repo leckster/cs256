@@ -187,7 +187,7 @@ var MUSCLE_GROUPS = [
 		]
 	},
 	{
-		name: "Calf Raises",
+		name: "Calf",
 		exercises: [
 		{
 			name: "One Leg Standing Calf Raise"
