@@ -1,3 +1,4 @@
+
 var MUSCLE_GROUPS = [
 	{
 		name: "Back",
@@ -484,16 +485,62 @@ function main_start_workout() {
 		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
 }
 
-function main_load_workout() {
-
-}
-
-function main_view_profile() {
-
-}
 
 function main_logout() {
 
+}
+
+function main_load_workout() {
+	$("#content").html(getSearchWorkoutsHTML());
+}
+
+function getSearchWorkoutsHTML() {
+	var html = '<div class="basic-search-wrapper">'
+			+'<form id="basic-search-form" name="basic-search-form" action="" method="get">'
+				+'<div id="search-input-wrapper">				'
+					+'<div id="search-tag">Search Criteria Description</div>'
+					+'<input class="form-control search-criteria" type="text" placeholder="Search Criteria">'
+					+'<div class="search-plans-only">'
+					+'<form action="">'
+					+'<input type="checkbox" name="Only-Search-Mine" value="Only-Search-Mine">  Only Search My Plans<br>'
+					+'</form></div>'
+					+'<a href="" class="advanced-search-link">Advanced Search..</a>'
+				+'</div>'
+				+'<div class="search-buttons-wrapper">'
+					+'<button class="btn btn-lg btn-danger search-btn">Search</button>'
+					+'<button class="btn btn-lg btn-danger cancel-search-btn">Cancel</button>'
+				+'</div>'
+			+'</form>'
+		+'</div>'
+		+'<div id="search-results">';
+		
+	for( var i = 0; i < test_workouts.length; i++){
+		var workout = test_workouts[i];
+		html += '<div class="exercise-main">'
+				+'<div class="arrow collapsed"></div>'
+				+'<div class="workout-name">' + workout.name + '</div>'
+				+'<div class-"workout-description">' + workout.description + '</div>'
+			+'</div>' ;
+		for( var j = 0; j < workout.exercises.length; j++){
+			var exercise = workout.exercises[j];
+			html += '<div class="workout-detail hidden">'
+				+'<div class="exercise-detail-name">'+ MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
+				+'<div class="log-section">'
+					+'<div class="mini-title">Sets:</div>'
+					+'<div class="sets">' + exercise.sets.length + ' </div>'
+				+'</div>'
+				+'<div class="log-section">'
+					+'<div class="mini-title">Reps:</div>'
+					+'<div class="reps">' + exercise.sets[0].rep + '</div>'
+				+'</div>'
+			+'</div>';
+		}
+	}
+	html += '</div>'
+		+'<div id="load-wrapper">'
+				+'<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>'
+		+'</div>';
+	return html;
 }
 
 
@@ -662,7 +709,7 @@ function add_set_for_exercise(index) {
 		+ '<div class="scroll-wheels">'
 			+ '<div class="scroll-wrapper"></div>'
 		+'</div>'
-		+'<div class="logging-buttons-wrapper">'
+		+'<div class="logging-buttons-wrapper clearfix">'
 			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Light\')">Too Light</button>'
 			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Just Right\')">Just Right</button>'
 			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Heavy\')">Too Heavy</button>'
@@ -694,8 +741,8 @@ function add_set(status) {
 	isAddingSet = false;
 
 	var new_set = {};
-	new_set.reps =  $('#reps').find(":selected").text();
-	new_set.weight =  $('#weight').find(":selected").text();
+	new_set.reps =  $('#reps option:selected').val();
+	new_set.weight =  $('#weights option:selected').val();
 	new_set.status = status;
 
 	current_workout.exercises[current_exercise_index].sets.push(new_set);
