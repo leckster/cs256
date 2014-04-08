@@ -255,6 +255,8 @@ body {
 
 .logging-buttons-wrapper {
 	width: 100%;
+	padding-left: 15%;
+
 }
 
 .search-buttons-wrapper {
@@ -270,7 +272,7 @@ body {
 
 /* BUTTONS */
 .logging-btn, .new-set-btn, #workout-complete-btn {
-	width: 25%;
+	width: 28%;
 	margin: 10px 10px 15px 10px;
 }
 
