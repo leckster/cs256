@@ -459,7 +459,7 @@ window.onload = load_main;
 
 function load_main()
 {
-	$("#title").html('<div id="t"><h1>Fast Fitness</h1></div>');
+	$("#title").html('<div id="t"><h1>Home</h1></div>');
 	$("#content").load("main.html");
 }
 
