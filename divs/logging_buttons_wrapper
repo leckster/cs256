@@ -1,5 +1,5 @@
 <div class="logging-buttons-wrapper">
-				<button class="btn btn-lg btn-danger logging-btn">Too Light</button>
+				<button class="btn btn-lg btn-danger logging-btn">Too Easy</button>
 				<button class="btn btn-lg btn-danger logging-btn">Just Right</button>
-				<button class="btn btn-lg btn-danger logging-btn">Too Heavy</button>
+				<button class="btn btn-lg btn-danger logging-btn">Too Hard</button>
 			</div>

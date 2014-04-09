@@ -7,7 +7,7 @@
 	</div>
 </div>
 <div class="logging-buttons-wrapper">
-	<button class="btn btn-lg btn-danger logging-btn" onclick="add_set('Too Light')">Too Light</button>
+	<button class="btn btn-lg btn-danger logging-btn" onclick="add_set('Too Easy')">Too Easy</button>
 	<button class="btn btn-lg btn-danger logging-btn" onclick="add_set('Just Right')">Just Right</button>
-	<button class="btn btn-lg btn-danger logging-btn" onclick="add_set('Too Heavy')">Too Heavy</button>
+	<button class="btn btn-lg btn-danger logging-btn" onclick="add_set('Too Hard')">Too Hard</button>
 </div>

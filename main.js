@@ -763,9 +763,9 @@ function add_set_for_exercise(index) {
 			+ '<div class="scroll-wrapper"></div>'
 		+'</div>'
 		+'<div class="logging-buttons-wrapper clearfix">'
-			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Light\')">Too Light</button>'
+			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Easy\')">Too Easy</button>'
 			+'<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Just Right\')">Just Right</button>'
-			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Heavy\')">Too Heavy</button>'
+			+ '<button class="btn btn-lg btn-danger logging-btn" onclick="add_set(\'Too Hard\')">Too Hard</button>'
 		+ '</div>');
 		
 		$(".scroll-wrapper").load("divs/selectors", null, function(){
