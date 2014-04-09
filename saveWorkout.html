@@ -1,72 +1,17 @@
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
-		<link rel="stylesheet" type="text/css" href="css/main.css">		
-	</head>
-	<body>
-		<div id="header">
-			<div id="title"><div id="t">Fast Fitness</div></div>
-			<div id="logo">Logo</div>
-		</div>
-		<div class="exercise-main-current">
-			<div class="arrow expanded"></div>
-			<div class="exercise-name">Exercise Name</div>
-			<div class="remove">X</div>
-		</div>
-		<div class="exercise-main-current-remove">
-			<div class="arrow expanded"></div>
-			<div class="exercise-name">Exercise Name</div>
-			<div class="remove-buttons-wrapper">
-				<button class="btn btn-danger remove-btn">Remove</button>
-				<button class="btn btn-danger cancel-btn">Cancel</button>
-			</div>
-		</div>
-		<div class="logging-area">
-			<div class="exercise-set">
-				<div class="set-number">Set 1</div>
-				<div class="log-section">
-					<div class="mini-title">Reps:</div>
-					<div class="reps">10</div>
-				</div>
-				<div class="log-section">
-					<div class="mini-title">Weight:</div>
-					<div class="weight">155</div>
-				</div>
-				<div class="remove">X</div>			
-			</div>
-			<div class="exercise-set-remove">
-				<div class="set-number">Set 2</div>
-				<div class="log-section">
-					<div class="mini-title">Reps:</div>
-					<div class="reps">____</div>
-				</div>
-				<div class="log-section">
-					<div class="mini-title">Weight:</div>
-					<div class="weight">____</div>
-				</div>
-				<div class="remove-buttons-wrapper">
-					<button class="btn btn-danger remove-btn">Remove</button>
-					<button class="btn btn-danger cancel-btn">Cancel</button>
-				</div>	
-			</div>
-			<div class="scroll-wheels">
-				<div class="scroll-wrapper">
-					<div class="scroll-wheel scroll-wheel-reps">10</div>
-					<div class="scroll-wheel scroll-wheel-weight">155</div>
-				</div>
-			</div>
-			<div class="logging-buttons-wrapper">
-				<button class="btn btn-lg btn-danger logging-btn">Too Easy</button>
-				<button class="btn btn-lg btn-danger logging-btn">Just Right</button>
-				<button class="btn btn-lg btn-danger logging-btn">Too Hard</button>
-			</div>
-			<!-- Normally this will be under the last recorded set -->
-			<div id="add-new-set-container">
-				<div class="btn btn-lg btn-danger new-set-btn">New Set</div>
-			</div>
-		</div>			
-		
-	</body>
-</html>
+<div class="container">
+	<h3>Save Directions:</h3>
+	<p>
+		Input an apropriate name and desciription for your workout. Saving workouts allows you and other people to view your workouts and copy them for future use. 
+	</p>
+
+	<div class="form-group">
+		<label class="sr-only" for="Title">Workout Name</label>
+		<input type="text" class="form-control" id="workout_name" placeholder="Workout Name">
+	</div>
+
+	<textarea id="workout_desc" class="form-control" rows="10" placeholder="Description of Workout"></textarea>
+
+</div>
+<div id="workout-complete-wrapper">
+	<button class="btn btn-lg btn-danger" id="workout-complete-btn" onclick="save_workout()">Save Workout</button>		
+</div>

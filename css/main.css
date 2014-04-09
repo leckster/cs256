@@ -15,7 +15,11 @@ body {
 	float: left;
 	width: 75%;
 }
-#t {
+#title h1 {
+	font-weight: bold;
+	color:#B92C28;
+}
+#t{
 	float: left;
 	width: 100%;
 	text-align: center;
@@ -78,6 +82,10 @@ body {
 	font-weight: bold;
 	margin-right: 5px;
 	float: right;
+}
+
+.form-control {
+	width: 100%;
 }
 
 .form-item {

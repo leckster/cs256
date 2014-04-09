@@ -15,6 +15,14 @@
 	float: right;
 }
 
+.container {
+	padding: 0 50px;
+}
+
+.form-control {
+	width: 100%;
+}
+
 .form-item {
 	margin: 30px 15px;
 }

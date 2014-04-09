@@ -455,15 +455,13 @@ var isAddingSet = false;
 
 var workouts = [];
 
-window.onload = init;
+window.onload = load_main;
 
-function init()
+function load_main()
 {
-	//ajax for main.html
+	$("#title").html('<div id="t"><h1>Fast Fitness</h1></div>');
 	$("#content").load("main.html");
 }
-
-
 
 //
 // MAIN FUNCTIONS
@@ -486,12 +484,19 @@ function main_start_workout() {
 }
 
 
-function main_logout() {
-
+function main_load_workout() {
+	$("#title").html("<h1>Load Workout</h1>" );
+	$("#content").html(getSearchWorkoutsHTML());
 }
 
-function main_load_workout() {
-	$("#content").html(getSearchWorkoutsHTML());
+
+function main_view_profile() {
+	$("#title").html("<h1>View Profile</h1>");
+	$("#content").load("studentProfile.html");
+}
+
+function main_logout() {
+
 }
 
 //
@@ -594,7 +599,6 @@ function load_workout() {
 	current_workout.name = "New Workout";
 	$("#content").load("log.html", null, function(){
 		render_exercises();
-		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	});
 	$("#title").html("<div class='title-top'>Date: " + current_workout.date + "</div>"
 		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
@@ -631,7 +635,7 @@ function selectExercise(e_index) {
 	render_exercises();
 	add_set_for_exercise(current_workout.exercises.length - 1);
 
-	//TODO: show the first set selector with reps and sets.
+	enable_workout_complete();
 }
 
 function render_exercises() {
@@ -644,7 +648,7 @@ function render_exercises() {
 			+'<div class="remove" onclick="show_remove_options(this)">X</div>'
 		+'</div>';
 	}
-	$("#content").html(html);
+	$("#exercise-block").html(html);
 }
 
 function render_sets(index) {
@@ -729,9 +733,10 @@ function remove_row(context) {
 
 		render_exercises();
 
-		isAddingSet = false;
-		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
-
+		if(isAddingSet){
+			isAddingSet = false;
+			$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+		}
 	} else {
 		var index = row.data("index");
 		if( index >= 0) {
@@ -747,6 +752,8 @@ function remove_row(context) {
 		}
 		$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 	}
+
+	enable_workout_complete();
 }
 
 function add_set_for_exercise(index) {
@@ -806,6 +813,26 @@ function add_set(status) {
 		+'</div>');
 	$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
+
+	enable_workout_complete();
+}
+
+function enable_workout_complete() {
+	if(current_workout.exercises.length == 0){
+		//disable workout complete button
+		$("#workout-complete-btn").addClass("disabled");
+		return;
+	}
+	for( var i = 0; i < current_workout.exercises.length; i++) {
+		if(current_workout.exercises[i].sets.length == 0) {
+			//disable workout complete button
+			$("#workout-complete-btn").addClass("disabled");
+			return;
+		}	
+	}
+	
+
+	$("#workout-complete-btn").removeClass("disabled");
 }
 
 function getMuscleGroupsHTML() {
@@ -833,6 +860,29 @@ function getExercisesHTML(mg_index) {
 	return html;
 }
 
+function workout_complete() {
+	$("#title").html("<h1>Save Workout</h1>");
+	$("#content").load("saveWorkout.html");
+}
+
+function save_workout() {
+	var name = $("#workout_name").val();
+	var desc = $("#workout_desc").val();
+
+	current_workout.name = name;
+	current_workout.description = desc;
+
+	workouts.push(current_workout);
+
+	current_workout = {
+		name: "New Workout",
+		description: "",
+		planOnly: false,
+		exercises: []
+	};
+
+	load_main();
+}
 //
 // PLAN WOKROUT
 //
