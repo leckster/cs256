@@ -502,7 +502,7 @@ function getSearchWorkoutsHTML() {
 	var html = '<div class="basic-search-wrapper">'
 			+'<form id="basic-search-form" name="basic-search-form" action="" method="get">'
 				+'<div id="search-input-wrapper">				'
-					+'<div id="search-tag">Search Criteria Description</div>'
+					+'<div id="search-tag">Search By Workout Name, Muscle Group, or Date</div>'
 					+'<input class="form-control search-criteria" type="text" placeholder="Search Criteria">'
 					+'<div class="search-plans-only">'
 					+'<form action="">'
