@@ -302,17 +302,17 @@ var test_workouts = [
 				sets: [
 					{
 						weight: 80,
-						rep:12,
+						reps:12,
 						status: "Too Easy"
 					},
 					{
 						weight: 90,
-						rep:10,
+						reps:10,
 						status: "Just Right"
 					},
 					{
 						weight: 90,
-						rep:8,
+						reps:8,
 						status: "Just Right"
 					},
 				]
@@ -323,17 +323,17 @@ var test_workouts = [
 				sets: [
 					{
 						weight: 40,
-						rep:15,
+						reps:15,
 						status: "Too Hard"
 					},
 					{
 						weight: 30,
-						rep:10,
+						reps:10,
 						status: "Too Easy"
 					},
 					{
 						weight: 35,
-						rep:10,
+						reps:10,
 						status: "Just Right"
 					},
 				]
@@ -351,17 +351,17 @@ var test_workouts = [
 				sets: [
 					{
 						weight: 80,
-						rep:12,
+						reps:12,
 						status: "Too Easy"
 					},
 					{
 						weight: 90,
-						rep:10,
+						reps:10,
 						status: "Just Right"
 					},
 					{
 						weight: 90,
-						rep:8,
+						reps:8,
 						status: "Just Right"
 					},
 				]
@@ -372,17 +372,17 @@ var test_workouts = [
 				sets: [
 					{
 						weight: 40,
-						rep:15,
+						reps:15,
 						status: "Too Hard"
 					},
 					{
 						weight: 30,
-						rep:10,
+						reps:10,
 						status: "Too Easy"
 					},
 					{
 						weight: 35,
-						rep:10,
+						reps:10,
 						status: "Just Right"
 					},
 				]
@@ -400,17 +400,17 @@ var test_workouts = [
 				sets: [
 					{
 						weight: 80,
-						rep:12,
+						reps:12,
 						status: ""
 					},
 					{
 						weight: 90,
-						rep:10,
+						reps:10,
 						status: ""
 					},
 					{
 						weight: 90,
-						rep:8,
+						reps:8,
 						status: ""
 					},
 				]
@@ -421,17 +421,17 @@ var test_workouts = [
 				sets: [
 					{
 						weight: 40,
-						rep:15,
+						reps:15,
 						status: ""
 					},
 					{
 						weight: 30,
-						rep:10,
+						reps:10,
 						status: ""
 					},
 					{
 						weight: 35,
-						rep:10,
+						reps:10,
 						status: ""
 					},
 				]
@@ -494,6 +494,10 @@ function main_load_workout() {
 	$("#content").html(getSearchWorkoutsHTML());
 }
 
+//
+//Load Workout
+//
+
 function getSearchWorkoutsHTML() {
 	var html = '<div class="basic-search-wrapper">'
 			+'<form id="basic-search-form" name="basic-search-form" action="" method="get">'
@@ -516,14 +520,14 @@ function getSearchWorkoutsHTML() {
 		
 	for( var i = 0; i < test_workouts.length; i++){
 		var workout = test_workouts[i];
-		html += '<div class="exercise-main">'
-				+'<div class="arrow collapsed"></div>'
+		html += '<div id="workout_' + i + '" class="exercise-main">'
+				+'<div class="arrow collapsed" onclick="toggle_workout(' + i + ')"></div>'
 				+'<div class="workout-name">' + workout.name + '</div>'
 				+'<div class-"workout-description">' + workout.description + '</div>'
 			+'</div>' ;
 		for( var j = 0; j < workout.exercises.length; j++){
 			var exercise = workout.exercises[j];
-			html += '<div class="workout-detail hidden">'
+			html += '<div class="workout-detail hidden toggle_for_exercise_' + i + '">'
 				+'<div class="exercise-detail-name">'+ MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
 				+'<div class="log-section">'
 					+'<div class="mini-title">Sets:</div>'
@@ -531,25 +535,76 @@ function getSearchWorkoutsHTML() {
 				+'</div>'
 				+'<div class="log-section">'
 					+'<div class="mini-title">Reps:</div>'
-					+'<div class="reps">' + exercise.sets[0].rep + '</div>'
+					+'<div class="reps">' + exercise.sets[0].reps + '</div>'
 				+'</div>'
 			+'</div>';
 		}
 	}
 	html += '</div>'
 		+'<div id="load-wrapper">'
-				+'<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>'
+				+'<button class="btn btn-lg btn-danger disabled" id="load-btn" onclick="load_workout()">Load Workout</button>'
 		+'</div>';
 	return html;
 }
 
+function toggle_workout(index) {
+	
+	var arrow = $("#workout_"+index).find(".arrow");
+
+	if(arrow.hasClass("expanded")) {
+		//un select the workout and toggle the arrow.
+		$("#workout_"+index).removeClass("exercise-main-current").addClass("exercise-main");
+		arrow.removeClass("expanded").addClass("collapsed");
+
+		//hide exercises for this workout
+		$(".toggle_for_exercise_"+index).addClass("hidden");
+
+		//disable load button
+		$("#load-btn").addClass("disabled");
+	} else {
+		current_workout_index = index;
+
+		//collapse all other workouts and their exercises
+		$(".exercise-main-current").addClass("exercise-main").removeClass("exercise-main-current");
+		$(".arrow").removeClass("expanded").addClass("collapsed");
+		$(".workout-detail").addClass("hidden");
+
+		//expand the selected workout
+		$("#workout_"+index).addClass("exercise-main-current");
+		arrow.removeClass("collapsed").addClass("expanded");
+		$(".toggle_for_exercise_"+index).removeClass("hidden");
+
+		//enable load button
+		$("#load-btn").removeClass("disabled");
+	}
+}
+
+function load_workout() {
+	current_workout = jQuery.extend(true, {}, test_workouts[current_workout_index]);
+	
+	var m = new Date();
+	var dateString =
+	m.getUTCFullYear() +"/"+
+	("0" + (m.getUTCMonth()+1)).slice(-2) +"/"+
+	("0" + m.getUTCDate()).slice(-2) + " " +
+	("0" + m.getUTCHours()).slice(-2) + ":" +
+	("0" + m.getUTCMinutes()).slice(-2);
+
+	current_workout.date = dateString;
+	current_workout.name = "New Workout";
+	$("#content").load("log.html", null, function(){
+		render_exercises();
+		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+	});
+	$("#title").html("<div class='title-top'>Date: " + current_workout.date + "</div>"
+		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
+}
 
 //
 // LOG WORKOUT
 //
 
 function log_add_exercise() {
-	console.log("add exercises");
 	$("#popover").html(getMuscleGroupsHTML());
 	$("#popover").removeClass("hidden");
 	$("#content").addClass("hidden");
@@ -658,14 +713,12 @@ function show_remove_options(context) {
 }
 
 function cancel_remove(context) {
-	console.log("cancel_remove");
 	$(".remove-buttons-wrapper").after('<div class="remove" onclick="show_remove_options(this)"></div>');
 	$(".remove-buttons-wrapper").remove();
 	$(".remove").html("X");
 }
 
 function remove_row(context) {
-	console.log("remove_row");
  	var row = $(context).parent().parent()
 	if(row.hasClass("exercise")) {
 		var index = row.data("index");

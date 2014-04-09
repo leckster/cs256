@@ -119,14 +119,19 @@ body {
 }
 
 
-.set-number, .exercise-detail-name {
+.exercise-detail-name {
 	margin: 0px 80px 0px 15px;
 	float: left;
 	width: 25%;
 }
+.set-number {
+	margin: 0px 15px;
+	float: left;
+	width: 25%;	
+}
 
 .log-section {
-	width: 18%;
+	width: 16%;
 	float: left;
 }
 
@@ -313,7 +318,7 @@ body {
 	bottom: 10px; */
 }
 
-#workout-complete-btn.disabled, bnt.disabled {
+#workout-complete-btn.disabled, bnt.disabled, #load-btn.disabled {
 	background-color: gray;
 	background-image: none;
 }
