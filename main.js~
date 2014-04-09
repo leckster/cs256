@@ -485,13 +485,13 @@ function main_start_workout() {
 
 
 function main_load_workout() {
-	$("#title").html("<div id="t"><h1>Load Workout</h1></div>" );
+	$("#title").html("<h1>Load Workout</h1>" );
 	$("#content").html(getSearchWorkoutsHTML());
 }
 
 
 function main_view_profile() {
-	$("#title").html("<div id="t"><h1>View Profile</h1></div>");
+	$("#title").html("<h1>View Profile</h1>");
 	$("#content").load("studentProfile.html");
 }
 
@@ -861,7 +861,7 @@ function getExercisesHTML(mg_index) {
 }
 
 function workout_complete() {
-	$("#title").html("<div id="t"><h1>Save Workout</h1></div>");
+	$("#title").html("<h1>Save Workout</h1>");
 	$("#content").load("saveWorkout.html");
 }
 

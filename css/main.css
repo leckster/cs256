@@ -8,7 +8,7 @@ body {
 	height: 75px;
 	line-height: 75px;
 	text-align: center;
-	border: 1px black solid;
+	border-bottom: 1px darkgrey solid;
 }
 
 #title {
@@ -19,6 +19,7 @@ body {
 	font-weight: bold;
 	color:#B92C28;
 }
+
 #t{
 	float: left;
 	width: 100%;
@@ -35,6 +36,7 @@ body {
 	text-align: left;
 	padding-left: 16px;
 	border-bottom: 1px solid black;
+	border-right: 1px solid black;
 }
 
 #title .title-bottom {
@@ -42,6 +44,7 @@ body {
 	line-height: 36px;
 	text-align: left;
 	padding-left: 16px;
+	border-right: 1px solid black;
 }
 
 .planning-mode {
@@ -51,7 +54,6 @@ body {
 
 #logo {
 	float: right;
-	border-left:1px black solid;
 	width: 25%
 }
 
@@ -221,6 +223,16 @@ body {
 	margin-left: 20px;
 }
 
+.progress-title {
+	text-align: left;
+	margin-left: 10%;
+}
+
+#progress-drop {
+	width: 80%;
+	margin-left:10%;
+}
+
 /* Search Pages */
 .basic-search-wrapper {
 	height: 200px;
@@ -290,6 +302,11 @@ body {
 #advanced-search-buttons-wrapper {
 	text-align: right;
 	margin: 0px 17px 30px 0px;
+}
+
+#home-button-wrapper {
+	text-align: right;
+	padding-right: 10%;
 }
 
 /* BUTTONS */
