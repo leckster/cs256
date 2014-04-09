@@ -140,14 +140,14 @@ body {
 }
 
 .scroll-wheels {
-	float: right;
+	margin-left: 15%;
 	height: 75px;
 	width: 85%;
 }
 
 .scroll-wrapper {
 	float: right;
-	margin-right: 140px;
+	margin: 10px 140px 0px 0px;
 }
 
 .scroll-wheel {
@@ -340,6 +340,7 @@ body {
 	clear: both;
 }
 
-#uipv_main_reps {
-	margin: 0px 20px;
+.scroll-title {
+	float: left;
+	margin: 24px 25px 0px 80px;	
 }
