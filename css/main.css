@@ -15,6 +15,15 @@ body {
 	float: left;
 	width: 75%;
 }
+#t {
+	float: left;
+	width: 100%;
+	text-align: center;
+	font-weight: bold;
+	font-size:46;
+	position: absolute;
+	color:#B92C28;
+}
 
 #title .title-top {
 	height: 50%;
@@ -37,7 +46,7 @@ body {
 }
 
 #logo {
-	float: left;
+	float: right;
 	border-left:1px black solid;
 	width: 25%
 }
