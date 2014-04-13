@@ -518,7 +518,7 @@ function getSearchWorkoutsHTML() {
 				+'</div>'
 				+'<div class="search-buttons-wrapper">'
 					+'<button class="btn btn-lg btn-danger search-btn">Search</button>'
-					+'<button class="btn btn-lg btn-danger cancel-search-btn">Cancel</button>'
+					+'<button class="btn btn-lg btn-danger cancel-search-btn" onclick="load_main()">Cancel</button>'
 				+'</div>'
 			+'</form>'
 		+'</div>'
