@@ -10,3 +10,8 @@
 .btn-lg {
 	font-size: 22px;
 }
+
+.form-control {
+	height: 50px;
+	font-size: 23px;	
+}
