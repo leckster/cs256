@@ -598,6 +598,17 @@ function load_workout() {
 
 	current_workout.date = dateString;
 	current_workout.name = "New Workout";
+
+	//blank all sets
+	for (var i = 0; i < current_workout.exercises.length; i++) {
+		var exercise = current_workout.exercises[i];
+		for (var i = 0; i < exercise.sets.length; i++) {
+			exercise.sets[i].reps = "";
+			exercise.sets[i].status = "";
+			exercise.sets[i].weight = "";
+		};
+	};
+
 	$("#content").load("log.html", null, function(){
 		render_exercises();
 	});
