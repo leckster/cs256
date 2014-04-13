@@ -290,8 +290,9 @@ var MUSCLE_GROUPS = [
 	}
 ];
 
-var test_workouts = [
+var workouts = [
 	{
+		date: "2014/03/13 04:12",
 		name: "Workout 1",
 		description: "first test workout in the system. Use this to test the profile page.",
 		planOnly: false,
@@ -341,6 +342,7 @@ var test_workouts = [
 		]
 	},
 	{
+		date: "2014/04/03 04:12",
 		name: "Workout 2",
 		description: "second test workout in the system. Use this to test the profile page.",
 		planOnly: false,
@@ -390,6 +392,7 @@ var test_workouts = [
 		]
 	},
 	{
+		date: "2014/04/13 04:12",
 		name: "Workout 3",
 		description: "Third test workout in the system. This should not show up in the profile page because it is only a plan.",
 		planOnly: true,
@@ -452,8 +455,6 @@ var current_exercise = {};
 var current_exercise_index = 0;
 
 var isAddingSet = false;
-
-var workouts = [];
 
 window.onload = load_main;
 
@@ -523,8 +524,8 @@ function getSearchWorkoutsHTML() {
 		+'</div>'
 		+'<div id="search-results">';
 		
-	for( var i = 0; i < test_workouts.length; i++){
-		var workout = test_workouts[i];
+	for( var i = 0; i < workouts.length; i++){
+		var workout = workouts[i];
 		html += '<div id="workout_' + i + '" class="exercise-main">'
 				+'<div class="arrow collapsed" onclick="toggle_workout(' + i + ')"></div>'
 				+'<div class="workout-name">' + workout.name + '</div>'
@@ -585,7 +586,7 @@ function toggle_workout(index) {
 }
 
 function load_workout() {
-	current_workout = jQuery.extend(true, {}, test_workouts[current_workout_index]);
+	current_workout = jQuery.extend(true, {}, workouts[current_workout_index]);
 	
 	var m = new Date();
 	var dateString =
