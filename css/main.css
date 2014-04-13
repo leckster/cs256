@@ -310,7 +310,7 @@ body {
 }
 
 /* BUTTONS */
-.logging-btn, .new-set-btn, #workout-complete-btn {
+.logging-btn, .new-set-btn {
 	width: 28%;
 	margin: 10px 10px 15px 10px;
 }
@@ -339,6 +339,11 @@ body {
 .new-set-btn {
 	width: 30%;
 	margin-left: 15%;	
+}
+
+#cancel-workout-btn {
+	width: 20%;
+	margin: 10px;
 }
 
 #workout-complete-btn, #load-btn {

@@ -913,6 +913,18 @@ function getExercisesHTML(mg_index) {
 	return html;
 }
 
+function cancel_workout() {
+	
+	current_workout = {
+		name: "New Workout",
+		description: "",
+		planOnly: false,
+		exercises: []
+	};
+
+	load_main();
+}
+
 function workout_complete() {
 	$("#title").html('<div id="t"><h1>Save Workout</h1></div>');
 	$("#content").load("saveWorkout.html");
