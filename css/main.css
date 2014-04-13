@@ -306,7 +306,8 @@ body {
 
 #home-button-wrapper {
 	text-align: right;
-	padding-right: 10%;
+	margin-right: 10%;
+	margin-top: 20px;
 }
 
 /* BUTTONS */
@@ -360,6 +361,10 @@ body {
 .search-btn, .cancel-search-btn {
 	width: 100%;
 	margin: 10px 0px;
+}
+
+#home {
+	margin-right: 0;	
 }
 
 /* Fix for mis-aligned list items */

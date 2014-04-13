@@ -4,11 +4,11 @@
 			<div class="form-tag progress-title">See progress for:</div>
 			<select id="progress-drop" class="form-control">
 			</select>
-		</div>
-		<div class="charts">
-		</div>
-		<div id="home-button-wrapper" class="form-item">
+			<div class="charts">
+			</div>
+			<div id="home-button-wrapper">
 			<button id="home" class="btn btn-lg btn-danger submit-btn" onclick="load_main()">Home</button>
+			</div>
 		</div>
 	</form>
 </div>
