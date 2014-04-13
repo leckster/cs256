@@ -613,13 +613,46 @@ function log_add_exercise() {
 	$("#popover").html(getMuscleGroupsHTML());
 	$("#popover").removeClass("hidden");
 	$("#content").addClass("hidden");
+}
 
+function createNewMuscleGroup() {
+	//show the input for the new muscle group name and the "Create" Button
+	var html = "";
+	$("#popover").append();
+}
+
+function addCreatedMuscleGroup() {
+	//get name of new muscle group from input and add it as a muscle group in the MUSCLE_GROUPS array
+	var new_muscle_group = {
+		name: $("#new_mg_name").val(),
+		exercises: []
+	};
+	MUSCLE_GROUPS.push(new_muscle_group);
+	//reload #popover with getMuscleGroupsHTML
+	$("#popover").html(getMuscleGroupsHTML());
 }
 
 function selectMuscleGroup(mg_index) {
 	current_exercise.mg_index = mg_index;
 
 	$("#popover").html(getExercisesHTML(mg_index));
+}
+
+function createNewExercise() {
+	//show the input for the new muscle group name and the "Create" Button
+	var html = "";
+	$("#popover").append(html);
+}
+
+function addCreatedExercise() {
+	//get name of new muscle group from input and add it as a muscle group in the MUSCLE_GROUPS array
+	var muscle_group = MUSCLE_GROUPS[current_exercise.mg_index];
+	var new_exercise = {
+		name: $("#new_e_name").val()
+	}
+	muscle_group.exercises.push(new_exercise);
+	//reload #popover with getExercisesHTML
+	$("#popover").html(getExercisesHTML(current_exercise.mg_index));
 }
 
 function selectExercise(e_index) {
@@ -845,6 +878,10 @@ function getMuscleGroupsHTML() {
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>';
 	}
+	html += '<div class="muscle-group" onclick="createNewMuscleGroup()">'
+			+'<div class="muscle-group-name">Create New Muscle Group</div>'
+			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
+		+'</div>';
 	return html;
 }
 
@@ -858,6 +895,10 @@ function getExercisesHTML(mg_index) {
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>';
 	}
+	html += '<div class="exercise" onclick="createNewExercise()">'
+			+'<div class="exercise-name">Create New Exercise</div>'
+			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
+		+'</div>';
 	return html;
 }
 
