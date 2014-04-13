@@ -1,3 +1,7 @@
 .form-control {
 	width: 75%;
 }
+
+.btn {
+	border: 0px;	
+}
