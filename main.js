@@ -292,6 +292,7 @@ var MUSCLE_GROUPS = [
 
 var workouts = [
 	{
+		index: 0,
 		date: "2014/03/13 04:12",
 		name: "Workout 1",
 		description: "first test workout in the system. Use this to test the profile page.",
@@ -319,8 +320,8 @@ var workouts = [
 				]
 			},
 			{
-				mg_index: 1,
-				e_index: 1,
+				mg_index: 3,
+				e_index: 3,
 				sets: [
 					{
 						weight: 40,
@@ -342,6 +343,7 @@ var workouts = [
 		]
 	},
 	{
+		index: 1,
 		date: "2014/04/03 04:12",
 		name: "Workout 2",
 		description: "second test workout in the system. Use this to test the profile page.",
@@ -392,6 +394,7 @@ var workouts = [
 		]
 	},
 	{
+		index: 2,
 		date: "2014/04/13 04:12",
 		name: "Workout 3",
 		description: "Third test workout in the system. This should not show up in the profile page because it is only a plan.",
@@ -487,7 +490,14 @@ function main_start_workout() {
 
 function main_load_workout() {
 	$("#title").html('<div id="t"><h1>Load Workout</h1></div>' );
-	$("#content").html(getSearchWorkoutsHTML());
+	$("#content").load("basicSearch.html", null, function() {
+		load_search_results(workouts);
+	});
+}
+
+function load_advanced_search() {
+	$("#title").html('<div id="t"><h1>Load Workout - Advanced</h1></div>' );
+	$("#content").load("advancedSearch.html");
 }
 
 
@@ -504,54 +514,6 @@ function main_logout() {
 //Load Workout
 //
 
-function getSearchWorkoutsHTML() {
-	var html = '<div class="basic-search-wrapper">'
-			+'<form id="basic-search-form" name="basic-search-form" action="" method="get">'
-				+'<div id="search-input-wrapper">				'
-					+'<div id="search-tag">Search By Workout Name, Muscle Group, or Date</div>'
-					+'<input class="form-control search-criteria" type="text" placeholder="Search Criteria">'
-					+'<div class="search-plans-only">'
-					+'<form action="">'
-					+'<input type="checkbox" name="Only-Search-Mine" value="Only-Search-Mine">  Only Search My Plans<br>'
-					+'</form></div>'
-					+'<a href="" class="advanced-search-link">Advanced Search..</a>'
-				+'</div>'
-				+'<div class="search-buttons-wrapper">'
-					+'<button class="btn btn-lg btn-danger search-btn">Search</button>'
-					+'<button class="btn btn-lg btn-danger cancel-search-btn" onclick="load_main()">Cancel</button>'
-				+'</div>'
-			+'</form>'
-		+'</div>'
-		+'<div id="search-results">';
-		
-	for( var i = 0; i < workouts.length; i++){
-		var workout = workouts[i];
-		html += '<div id="workout_' + i + '" class="exercise-main">'
-				+'<div class="arrow collapsed" onclick="toggle_workout(' + i + ')"></div>'
-				+'<div class="workout-name">' + workout.name + '</div>'
-				+'<div class-"workout-description">' + workout.description + '</div>'
-			+'</div>' ;
-		for( var j = 0; j < workout.exercises.length; j++){
-			var exercise = workout.exercises[j];
-			html += '<div class="workout-detail hidden toggle_for_exercise_' + i + '">'
-				+'<div class="exercise-detail-name">'+ MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
-				+'<div class="log-section">'
-					+'<div class="mini-title">Sets:</div>'
-					+'<div class="sets">' + exercise.sets.length + ' </div>'
-				+'</div>'
-				+'<div class="log-section">'
-					+'<div class="mini-title">Reps:</div>'
-					+'<div class="reps">' + exercise.sets[0].reps + '</div>'
-				+'</div>'
-			+'</div>';
-		}
-	}
-	html += '</div>'
-		+'<div id="load-wrapper">'
-				+'<button class="btn btn-lg btn-danger disabled" id="load-btn" onclick="load_workout()">Load Workout</button>'
-		+'</div>';
-	return html;
-}
 
 function toggle_workout(index) {
 	
@@ -583,6 +545,84 @@ function toggle_workout(index) {
 		//enable load button
 		$("#load-btn").removeClass("disabled");
 	}
+}
+
+function search_basic() {
+
+}
+
+function search_advanced() {
+	var search_muscle_group = $("#muscle_group").val().toLowerCase();
+	var search_date = $("#creation_date").val();
+	var search_exercise = $("#exercise").val();
+
+	console.log("Advanced Search");
+	console.log(search_muscle_group);
+	console.log(search_exercise);
+	var found_workouts = [];
+	for (var i = 0; i < workouts.length; i++) {
+		var workout = workouts[i];
+
+		if(workout.date.indexOf(search_date) != -1) {
+			found_workouts.push(workout);
+			continue;
+		}
+		
+		for (var j = 0; j < workout.exercises.length; j++) {
+			var exercise = workout.exercises[j];
+
+			if(search_muscle_group.indexOf(MUSCLE_GROUPS[exercise.mg_index].name.toLowerCase()) != -1) {
+				found_workouts.push(workout);
+				break;
+			}
+			exercise_name = MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name.toLowerCase();
+			exercise_name_frags = exercise_name.split(" ");
+
+			var frag_exists = false;
+			for (var k = 0; k < exercise_name_frags.length && frag_exists == false; k++) {
+				var frag = exercise_name_frags[k];
+				if(search_exercise.indexOf(frag) != -1){
+					frag_exists = true;
+				}
+			};
+
+			if(frag_exists){
+				found_workouts.push(workout);
+				break;
+			}
+		};
+	};
+	console.log(found_workouts);
+	//load the found exercieses into the #search-results
+	load_search_results(found_workouts);
+
+}
+
+function load_search_results(found_workouts) {
+	var html = "";		
+	for( var i = 0; i < found_workouts.length; i++){
+		var workout = found_workouts[i];
+		html += '<div id="workout_' + workout.index + '" class="exercise-main">'
+				+'<div class="arrow collapsed" onclick="toggle_workout(' + workout.index + ')"></div>'
+				+'<div class="workout-name">' + workout.name + '</div>'
+				+'<div class-"workout-description">' + workout.description + '</div>'
+			+'</div>' ;
+		for( var j = 0; j < workout.exercises.length; j++){
+			var exercise = workout.exercises[j];
+			html += '<div class="workout-detail hidden toggle_for_exercise_' + workout.index + '">'
+				+'<div class="exercise-detail-name">'+ MUSCLE_GROUPS[exercise.mg_index].exercises[exercise.e_index].name + '</div>'
+				+'<div class="log-section">'
+					+'<div class="mini-title">Sets:</div>'
+					+'<div class="sets">' + exercise.sets.length + ' </div>'
+				+'</div>'
+				+'<div class="log-section">'
+					+'<div class="mini-title">Reps:</div>'
+					+'<div class="reps">' + exercise.sets[0].reps + '</div>'
+				+'</div>'
+			+'</div>';
+		}
+	}
+	$("#search-results").html(html);
 }
 
 function load_workout() {
@@ -938,6 +978,7 @@ function save_workout() {
 	var name = $("#workout_name").val();
 	var desc = $("#workout_desc").val();
 
+	current_workout.index = workouts.length;
 	current_workout.name = name;
 	current_workout.description = desc;
 

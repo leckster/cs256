@@ -1,63 +1,29 @@
 <!-- Recording/Planning Page -->
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
-		<link rel="stylesheet" type="text/css" href="css/main.css">		
-	</head>
-	<body>
-        <div class="advanced-search">
-			<form id="advanced-search-form" name="advanced-search-form" action="" method="get">
-				<div class="form-item">
-					<div class="form-tag">Muscle Group:</div>
-					<input id="muscle_group" class="form-control" type="text" placeholder="Username">
-				</div>
-				<div class="form-item">
-					<div class="form-tag">Creator Name:</div>
-					<input id="creator_name" class="form-control" type="text" placeholder="Creator Name">
-				</div>
-				<div class="form-item">
-					<div class="form-tag">Creation Date:</div>
-					<input id="creation_date" class="form-control" type="text" placeholder="Creation Date">
-				</div>
-				<div class="form-item">
-					<div class="form-tag">Exercises:</div>
-					<input id="exercise1" class="form-control" type="text" placeholder="Exercise Name">
-				</div>
-				<div class="form-item">
-					<div class="form-tag"></div>
-					<input id="exercise2" class="form-control" type="text" placeholder="Exercise Name">
-				</div>
-				<div id="advanced-search-buttons-wrapper">
-					<button id="cancel-advanced" class="btn btn-lg btn-danger submit-btn">Cancel</button>
-					<button id="search-advanced" class="btn btn-lg btn-danger submit-btn">Search</button>
-				</div>
-			</form>
+<div id="advanced-search-wrapper">
+	<div class="advanced-search">
+		<div class="form-item">
+			<div class="form-tag">Muscle Groups:</div>
+			<input id="muscle_group" class="form-control" type="text" placeholder="Muscle Groups (comma separated)">
 		</div>
-		<div class="exercise-main">
-			<div class="arrow collapsed"></div>
-			<div class="workout-name">Workout Name</div>
-			<div class-"workout-description">Description</div>
+		<div class="form-item">
+			<div class="form-tag">Creator Name:</div>
+			<input id="creator_name" class="form-control" type="text" placeholder="Creator Name">
 		</div>
-		<div class="exercise-main-current">
-			<div class="arrow expanded"></div>
-			<div class="workout-name">Workout Name</div>
-			<div class-"workout-description">Description</div>
+		<div class="form-item">
+			<div class="form-tag">Creation Date:</div>
+			<input id="creation_date" class="form-control" type="text" placeholder="YYYY/MM/DD">
 		</div>
-		<div class="workout-detail">
-			<div class="exercise-detail-name">Exercise Name</div>
-			<div class="log-section">
-				<div class="mini-title">Sets:</div>
-				<div class="sets">5</div>
-			</div>
-			<div class="log-section">
-				<div class="mini-title">Reps:</div>
-				<div class="reps">10</div>
-			</div>
+		<div class="form-item">
+			<div class="form-tag">Exercises:</div>
+			<input id="exercise" class="form-control" type="text" placeholder="Exercise Names (comma separated)">
 		</div>
-		<div id="load-wrapper">
-				<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>		
+		<div id="advanced-search-buttons-wrapper">
+			<button id="cancel-advanced" class="btn btn-lg btn-danger submit-btn" onclick="main_load_workout()">Cancel</button>
+			<button id="search-advanced" class="btn btn-lg btn-danger submit-btn" onclick="search_advanced()">Search</button>
 		</div>
-	</body>
-</html>
+	</div>
+	<div id="search-results" class="clearfix"></div>
+</div>
+<div id="load-wrapper">
+	<button class="btn btn-lg btn-danger disabled" id="load-btn" onclick="load_workout()">Load Workout</button>
+</div>

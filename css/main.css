@@ -106,7 +106,7 @@ body {
 }
 
 /* Logging */
-#log-workout-wrapper {
+#log-workout-wrapper, #advanced-search-wrapper, #basic-search-wrapper {
 	height: 86%;
 	overflow: scroll;
 }
