@@ -548,6 +548,46 @@ function toggle_workout(index) {
 }
 
 function search_basic() {
+	var search_text = $("#search_text").val().toLowerCase();
+
+	console.log("Basic Search");
+	var found_workouts = [];
+	for (var i = 0; i < workouts.length; i++) {
+		var workout = workouts[i];
+
+		var search_frags = search_text.split(" ");
+		for (var l = 0; l < search_frags.length; l++) {
+			search_frag = search_frags[l];
+
+			if(search_frag.length > 8 && workout.date.indexOf(search_frag) != -1) {
+				found_workouts.push(workout);
+				break;
+			}
+
+			if(workout.name.toLowerCase().indexOf(search_frag) != -1) {
+				found_workouts.push(workout);
+				break;
+			}
+
+			var has_exercise = false;
+			for (var j = 0; j < workout.exercises.length; j++) {
+				var exercise = workout.exercises[j];
+
+				if(search_frag.indexOf(MUSCLE_GROUPS[exercise.mg_index].name.toLowerCase()) != -1) {
+					has_exercise = true;
+					break;
+				}
+			}
+			if(has_exercise) {
+				found_workouts.push(workout);
+				break;
+			}
+		};
+
+	}
+	console.log(found_workouts);
+	//load the found exercieses into the #search-results
+	load_search_results(found_workouts);
 
 }
 
@@ -563,7 +603,7 @@ function search_advanced() {
 	for (var i = 0; i < workouts.length; i++) {
 		var workout = workouts[i];
 
-		if(workout.date.indexOf(search_date) != -1) {
+		if(search_date.length > 0 && workout.date.indexOf(search_date) != -1) {
 			found_workouts.push(workout);
 			continue;
 		}
@@ -571,7 +611,7 @@ function search_advanced() {
 		for (var j = 0; j < workout.exercises.length; j++) {
 			var exercise = workout.exercises[j];
 
-			if(search_muscle_group.indexOf(MUSCLE_GROUPS[exercise.mg_index].name.toLowerCase()) != -1) {
+			if(search_muscle_group.length > 0 &&  search_muscle_group.indexOf(MUSCLE_GROUPS[exercise.mg_index].name.toLowerCase()) != -1) {
 				found_workouts.push(workout);
 				break;
 			}
@@ -581,7 +621,7 @@ function search_advanced() {
 			var frag_exists = false;
 			for (var k = 0; k < exercise_name_frags.length && frag_exists == false; k++) {
 				var frag = exercise_name_frags[k];
-				if(search_exercise.indexOf(frag) != -1){
+				if(search_exercise.length > 0 && search_exercise.indexOf(frag) != -1){
 					frag_exists = true;
 				}
 			};

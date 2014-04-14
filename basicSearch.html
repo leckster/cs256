@@ -1,54 +1,21 @@
-<!-- Main Page -->
-<html>
-	<head>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
-		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
-		<link rel="stylesheet" type="text/css" href="css/main.css">		
-	</head>
-	<body>		
-        <div class="basic-search-wrapper">
-			<form id="basic-search-form" name="basic-search-form" action="" method="get">
-				<div id="search-input-wrapper">				
-					<div id="search-tag">Search Criteria Description</div>
-					<input class="form-control search-criteria" type="text" placeholder="Search Criteria">
-					<div class="search-plans-only">
-					<form action="">
-					<input type="checkbox" name="Only-Search-Mine" value="Only-Search-Mine">  Only Search My Plans<br>
-					</form></div>
-					<a href="" class="advanced-search-link">Advanced Search..</a>
-				</div>
-				<div class="search-buttons-wrapper">
-					<button class="btn btn-lg btn-danger search-btn">Search</button>
-					<button class="btn btn-lg btn-danger cancel-search-btn">Cancel</button>
-				</div>
-			</form>
+<div id="basic-search-wrapper">
+	<div class="basic-search-wrapper">
+		<div id="search-input-wrapper">				
+			<div id="search-tag">Search By Workout Name, Muscle Group, or Date</div>
+			<input id="search_text" class="form-control search-criteria" type="text" placeholder="Search Criteria">
+			<div class="search-plans-only">
+			<form action="">
+			<input type="checkbox" name="Only-Search-Mine" value="Only-Search-Mine">  Only Search My Plans<br>
+			</form></div>
+			<a href="javascript:void(0)" class="advanced-search-link" onclick="load_advanced_search()">AdvancedSearch..</a>
 		</div>
-      <div id="search-results">
-      	<div class="exercise-main">
-				<div class="arrow collapsed"></div>
-				<div class="workout-name">Workout Name</div>
-				<div class-"workout-description">Description</div>
-			</div>
-			<div class="exercise-main-current">
-				<div class="arrow expanded"></div>
-				<div class="workout-name">Workout Name</div>
-				<div class-"workout-description">Description</div>
-			</div>
-			<div class="workout-detail">
-				<div class="exercise-detail-name">Exercise Name</div>
-				<div class="log-section">
-					<div class="mini-title">Sets:</div>
-					<div class="sets">5</div>
-				</div>
-				<div class="log-section">
-					<div class="mini-title">Reps:</div>
-					<div class="reps">10</div>
-				</div>
-			</div>
-		<div id="load-wrapper">
-				<button class="btn btn-lg btn-danger" id="load-btn">Load Workout</button>		
+		<div class="search-buttons-wrapper">
+			<button class="btn btn-lg btn-danger search-btn" onclick="search_basic()">Search</button>
+			<button class="btn btn-lg btn-danger cancel-search-btn" onclick="load_main()">Cancel</button>
 		</div>
-      </div>
-	</body>
-</html>
+	</div>
+	<div id="search-results" class="clearfix"></div>
+</div>
+<div id="load-wrapper">
+	<button class="btn btn-lg btn-danger disabled" id="load-btn" onclick="load_workout()">Load Workout</button>
+</div>
