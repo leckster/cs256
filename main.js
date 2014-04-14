@@ -745,7 +745,7 @@ function toggle_exercise(index) {
 
 	if(isAddingSet) {
 		isAddingSet = false;
-		$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+		$("#log-workout-wrapper").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	}
 }
 
@@ -780,7 +780,7 @@ function remove_row(context) {
 
 		if(isAddingSet){
 			isAddingSet = false;
-			$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+			$("#log-workout-wrapper").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 		}
 	} else {
 		var index = row.data("index");
@@ -793,7 +793,7 @@ function remove_row(context) {
 			+'</div>');
 		if(isAddingSet){
 			isAddingSet = false;
-			$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+			$("#log-workout-wrapper").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 		}
 		$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 	}
@@ -856,7 +856,7 @@ function add_set(status) {
 		+'</div><div id="add-new-set-container">'
 			+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
 		+'</div>');
-	$("#content").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+	$("#log-workout-wrapper").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
 	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 
 	enable_workout_complete();
