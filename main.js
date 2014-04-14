@@ -780,7 +780,7 @@ function render_sets(index) {
 	var html = '';
 	for( var i = 0; i < current_workout.exercises[index].sets.length; i++) {
 		var set = current_workout.exercises[index].sets[i];
-		html += '<div class="exercise-set" data-index="' + i + '">'
+		html += '<div class="exercise-set" data-index="' + i + '" onclick="edit_set(' + i + ', this)">'
 			+ '<div class="set-number">Set ' + (i+1) +'</div>'
 			+ '<div class="log-section">'
 				+ '<div class="mini-title">Reps:</div>'
@@ -940,6 +940,52 @@ function add_set(status) {
 	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
 
 	enable_workout_complete();
+}
+
+function edit_set(index, _this) {
+	console.log("Edit Set");
+	if(isAddingSet){
+		return;
+	}
+
+	$("#add-new-set-container").remove();
+	$("#add-exercise").remove();
+
+	isAddingSet = true;
+	var html = '<div class="scroll-wheels">'
+			+ '<div class="scroll-wrapper"></div>'
+		+'</div>'
+		+'<div class="logging-buttons-wrapper clearfix">'
+			+'<button class="btn btn-lg btn-danger logging-btn" onclick="save_set(' + index + ',\'Too Easy\')">Too Easy</button>'
+			+'<button class="btn btn-lg btn-danger logging-btn" onclick="save_set(' + index + ',\'Just Right\')">Just Right</button>'
+			+'<button class="btn btn-lg btn-danger logging-btn" onclick="save_set(' + index + ',\'Too Hard\')">Too Hard</button>'
+		+ '</div>';
+
+	$(_this).after(html);
+
+	$(".scroll-wrapper").load("divs/selectors", null, function(){
+		$('#reps').iPhonePicker({ width: '80px', imgRoot: 'images/' });
+		$('#weights').iPhonePicker({ width: '80px', imgRoot: 'images/' });			
+	});
+}
+
+function save_set(index, status) {
+	isAddingSet = false;
+
+	var set = current_workout.exercises[current_exercise_index].sets[index];
+	set.reps =  $('#reps option:selected').val();
+	set.weight =  $('#weights option:selected').val();
+	set.status = status;
+
+
+	$(".logging-area").html('<div class="exercise-set-wrapper clearfix">'
+		+'</div><div id="add-new-set-container">'
+			+'<div class="btn btn-lg btn-danger new-set-btn" onclick="add_set_for_exercise(' + current_exercise_index + ')">New Set</div>'
+		+'</div>');
+	$("#log-workout-wrapper").append('<div id="add-exercise" onclick="log_add_exercise()">Add Exercise...	</div>');
+	$(".exercise-set-wrapper").html(render_sets(current_exercise_index));
+
+	enable_workout_complete();	
 }
 
 function enable_workout_complete() {
