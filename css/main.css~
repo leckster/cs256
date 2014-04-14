@@ -1,6 +1,8 @@
 body {
 	background-color: rgb(235, 235, 235);	
 	min-width: 768px;
+	font-size: 24px;
+	background-image: url("../images/logo_clear_bg.png");
 }
 
 #header {
@@ -8,7 +10,7 @@ body {
 	height: 75px;
 	line-height: 75px;
 	text-align: center;
-	border-bottom: 1px darkgrey solid;
+	border-bottom: 0px darkgrey solid;
 }
 
 #title {
@@ -54,7 +56,6 @@ body {
 
 #logo {
 	float: right;
-	/*border-left:1px darkgrey solid;*/
 	width: 25%
 }
 
@@ -63,32 +64,30 @@ body {
 }
 
 .arrow.collapsed {
-	border-top: 10px solid transparent;
-	border-bottom: 10px solid transparent;	
-	border-left: 20px solid rgb(66, 66, 66);
+	border-top: 20px solid transparent;
+	border-bottom: 20px solid transparent;	
+	border-left: 35px solid rgb(66, 66, 66);
 	float: left;
-	margin: 10px 15px 0px 8px;
+	margin: 20px 30px 0px 15px;
 }
 
 .arrow.expanded {
-	border-top: 20px solid rgb(189, 14, 14);
-	border-right: 10px solid transparent;
-	border-left: 10px solid transparent;
+	border-top: 35px solid rgb(189, 14, 14);
+	border-right: 20px solid transparent;
+	border-left: 20px solid transparent;
 	float: left;
-	margin: 10px 15px 0px 8px;
+	margin: 25px 30px 0px 15px;
 }
 
 .remove {
-	width: 20px;
+	width: 6%;
 	color: rgb(231, 47, 47);
-	font-size: 16pt;
+	font-size: 25pt;
 	font-weight: bold;
 	margin-right: 5px;
 	float: right;
-}
-
-.form-control {
-	width: 100%;
+	text-align: right;
+	padding-right: 10px;
 }
 
 .form-item {
@@ -111,8 +110,8 @@ body {
 #add-exercise, .muscle-group, .exercise,
 .workout-detail, .student-wrapper, .class-wrapper {
 	background-color: gray;
-	height:40px;
-	line-height: 40px;
+	height:80px;
+	line-height: 80px;
 	border-bottom: 1px black solid;
 	color: whitesmoke;
 }
@@ -144,14 +143,16 @@ body {
 	float: left;
 	width: 25%;
 }
+
 .set-number {
-	margin: 0px 15px;
+	padding-left: 30px;
 	float: left;
-	width: 25%;	
+	width: 23%;	
+	text-align: left;
 }
 
 .log-section {
-	width: 16%;
+	width: 23%;
 	float: left;
 }
 
@@ -203,14 +204,19 @@ body {
 
 .nav-arrow-right {
 	float: right;	
-	height: 20px;
-	margin: 10px 7px;
+	height: 30px;
+	margin: 25px 15px;
 }
 
 .video-link {
-	height: 40px;
+	height: 60px;
 	float: left;
-	margin: 0px 15px 0px 10px;	
+	margin: 10px 15px 0px 10px;	
+}
+
+/* Save Workout */
+#workout_name, #workout_desc {
+	width: 100%;
 }
 
 /* Loading Workout */
@@ -236,7 +242,7 @@ body {
 
 /* Search Pages */
 .basic-search-wrapper {
-	height: 200px;
+	height: 250px;
 }
 
 .search-criteria {
@@ -264,14 +270,13 @@ body {
 	float: left;
 }
 
-
 /* Button Wrappers */
 #registration-buttons-wrapper {
 	text-align: right;
 }
 
 #main-buttons-wrapper {
-	width: 60%;
+	width: 100%;
 	margin: 30px auto;
 	text-align: center;
 }
@@ -284,8 +289,9 @@ body {
 }
 
 .remove-buttons-wrapper {
-	margin-right: 10px;
-	float: right;	
+	padding-right: 10px;
+	position: absolute;
+	right: 0px;
 }
 
 .logging-buttons-wrapper {
@@ -307,7 +313,8 @@ body {
 
 #home-button-wrapper {
 	text-align: right;
-	padding-right: 10%;
+	margin-right: 10%;
+	margin-top: 20px;
 }
 
 /* BUTTONS */
@@ -324,7 +331,8 @@ body {
 .main-btn {
 	width: 80%;
 	margin: 20px 0px;
-	height: 70px;
+	height: 100px;
+	font-size: 30px;
 }	
 
 .remove-btn, .cancel-btn {
@@ -340,6 +348,7 @@ body {
 .new-set-btn {
 	width: 30%;
 	margin-left: 15%;	
+	padding-top: 23px;
 }
 
 #workout-complete-btn, #load-btn {
@@ -361,6 +370,10 @@ body {
 .search-btn, .cancel-search-btn {
 	width: 100%;
 	margin: 10px 0px;
+}
+
+#home {
+	margin-right: 0;	
 }
 
 /* Fix for mis-aligned list items */

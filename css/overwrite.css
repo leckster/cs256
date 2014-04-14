@@ -3,5 +3,15 @@
 }
 
 .btn {
-	border: 0px;	
+	border: 0px;
+	height: 70px;	
+}
+
+.btn-lg {
+	font-size: 22px;
+}
+
+.form-control {
+	height: 50px;
+	font-size: 23px;	
 }
