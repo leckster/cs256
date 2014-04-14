@@ -149,6 +149,8 @@ body {
 	margin: 0px 80px 0px 15px;
 	float: left;
 	width: 25%;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 .set-number {
@@ -229,6 +231,11 @@ body {
 /* Loading Workout */
 .workout-name {
 	margin-right: 80px;
+}
+
+.workout-description {
+	white-space: nowrap;
+	overflow: hidden;	
 }
 
 /* Coach Student View */

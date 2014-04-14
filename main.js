@@ -645,7 +645,7 @@ function load_search_results(found_workouts) {
 		html += '<div id="workout_' + workout.index + '" class="exercise-main">'
 				+'<div class="arrow collapsed" onclick="toggle_workout(' + workout.index + ')"></div>'
 				+'<div class="workout-name">' + workout.name + '</div>'
-				+'<div class-"workout-description">' + workout.description + '</div>'
+				+'<div class="workout-description">' + workout.description + '</div>'
 			+'</div>' ;
 		for( var j = 0; j < workout.exercises.length; j++){
 			var exercise = workout.exercises[j];
