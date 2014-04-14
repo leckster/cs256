@@ -914,6 +914,10 @@ function getExercisesHTML(mg_index) {
 }
 
 function cancel_workout() {
+
+	if(!confirm("Are you sure you would like to leave this page? Doing so will clear the current workout.")) {
+		return;
+	}
 	
 	current_workout = {
 		name: "New Workout",
