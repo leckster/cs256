@@ -706,6 +706,15 @@ function log_add_exercise() {
 	$("#content").addClass("hidden");
 }
 
+function mg_back() {
+	$("#content").removeClass("hidden");
+	$("#popover").addClass("hidden");
+}
+
+function e_back() {
+	$("#popover").html(getMuscleGroupsHTML());
+}
+
 function createNewMuscleGroup() {
 	//show the input for the new muscle group name and the "Create" Button
 	var html = "";
@@ -800,6 +809,7 @@ function render_sets(index) {
 }
 
 function toggle_exercise(index) {
+
 	$(".logging-area").remove();
 
 	var arrow = $("#exercise_"+index).find(".arrow");
@@ -839,12 +849,14 @@ function show_remove_options(context) {
 	$(context).remove();
 	$(".remove-buttons-wrapper").html('<button class="btn btn-danger remove-btn" onclick="remove_row(this)">Remove</button>'
 		+'<button class="btn btn-danger cancel-btn" onclick="cancel_remove(this)">Cancel</button>');
+	event.stopPropagation();
 }
 
 function cancel_remove(context) {
 	$(".remove-buttons-wrapper").after('<div class="remove" onclick="show_remove_options(this)"></div>');
 	$(".remove-buttons-wrapper").remove();
 	$(".remove").html("X");
+	event.stopPropagation();
 }
 
 function remove_row(context) {
@@ -879,6 +891,7 @@ function remove_row(context) {
 	}
 
 	enable_workout_complete();
+	event.stopPropagation();
 }
 
 function add_set_for_exercise(index) {
@@ -1018,6 +1031,9 @@ function getMuscleGroupsHTML() {
 	html += '<div class="muscle-group" onclick="createNewMuscleGroup()">'
 			+'<div class="muscle-group-name">Create New Muscle Group</div>'
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
+		+'</div>'
+		+'<div id="back-button-wrapper">'
+			+'<button class="btn btn-lg btn-danger" id="cancel-workout-btn" onclick="mg_back()">Back</button>'
 		+'</div>';
 	return html;
 }
@@ -1035,6 +1051,9 @@ function getExercisesHTML(mg_index) {
 	html += '<div class="exercise" onclick="createNewExercise()">'
 			+'<div class="exercise-name">Create New Exercise</div>'
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
+		+'</div>'
+		+'<div id="back-button-wrapper">'
+			+'<button class="btn btn-lg btn-danger" id="cancel-workout-btn" onclick="e_back()">Back</button>'
 		+'</div>';
 	return html;
 }
