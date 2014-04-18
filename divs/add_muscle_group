@@ -1,0 +1,5 @@
+<div class="add-muscle-group">		
+			<input id="new-muscle-group" class="form-control" type="text" placeholder="New Muscle Group">
+			<button id="add-group-btn" class="btn btn-lg btn-danger">Add</button>
+			<button id="cancel-add-group-btn" class="btn btn-lg btn-danger">Cancel</button>
+		</div>
