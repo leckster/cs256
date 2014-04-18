@@ -114,7 +114,8 @@ body {
 .exercise-main, .exercise-main-remove, 
 .exercise-set, .exercise-set-remove, 
 .exercise-main-current, .exercise-main-current-remove, 
-#add-exercise, .muscle-group, .add-muscle-group, .exercise,
+#add-exercise, .muscle-group, .add-muscle-group,
+.exercise, .create-new-exercise,
 .workout-detail, .student-wrapper, .class-wrapper {
 	background-color: gray;
 	height:80px;
@@ -130,6 +131,7 @@ body {
 .exercise-name, .set-number, .mini-title, .reps, .weight, .workout-name {
 	float: left;
 	color: whitesmoke;
+	margin-left: 15px;
 }
 
 .logging-area {
@@ -211,11 +213,11 @@ body {
 	float: left;
 }
 
-.add-muscle-group {
+.add-muscle-group, .create-new-exercise {
 	padding-top: 14px;	
 }
 
-#new-muscle-group {
+#new-muscle-group, #new-exercise {
 	float: left;	
 	width: 57%;
 	margin-left: 5%;
@@ -231,7 +233,7 @@ body {
 .video-link {
 	height: 60px;
 	float: left;
-	margin: 10px 15px 0px 10px;	
+	margin: 10px 0px 0px 10px;	
 }
 
 /* Save Workout */
@@ -404,7 +406,8 @@ body {
 	margin: 10px 0px;
 }
 
-#add-group-btn, #cancel-add-group-btn {
+#add-group-btn, #cancel-add-group-btn,
+#add-exercise-btn, #cancel-add-exercise-btn {
 	float: left;
 	width: 15%;
 	margin-left: 3%;

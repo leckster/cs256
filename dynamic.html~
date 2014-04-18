@@ -105,6 +105,11 @@
 			<button id="add-group-btn" class="btn btn-lg btn-danger">Add</button>
 			<button id="cancel-add-group-btn" class="btn btn-lg btn-danger">Cancel</button>
 		</div>
+		<div class="create-new-exercise">		
+			<input id="new-exercise" class="form-control" type="text" placeholder="New Exercise">
+			<button id="add-exercise-btn" class="btn btn-lg btn-danger">Add</button>
+			<button id="cancel-add-exercise-btn" class="btn btn-lg btn-danger">Cancel</button>
+		</div>
 		<div class="exercise">
 			<img class="video-link" src="img/video-link.png"/>
 			<div class="exercise-name">Exercise Name</div>
