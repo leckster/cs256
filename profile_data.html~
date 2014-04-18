@@ -1,0 +1,28 @@
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+		<link rel="stylesheet" type="text/css" href="css/overwrite.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">		
+	</head>
+	<body>
+		<div id="profile-data">
+			<div class="profile-page-row">
+				<div class="profile-row-title">Average Weight:</div>
+				<div class="profile-row-data">75 lbs</div>
+			</div>
+			<div class="profile-page-row">
+				<div class="profile-row-title">Weight Max:</div>
+				<div class="profile-row-data">110 lbs</div>
+			</div>
+			<div class="profile-page-row">
+				<div class="profile-row-title">% Inc in 1 Week:</div>
+				<div class="profile-row-data">8.5%</div>
+			</div>
+			<div class="profile-page-row">
+				<div class="profile-row-title">$ Inc in 2 Weeks:</div>
+				<div class="profile-row-data">9.5%</div>
+			</div>
+		</div>
+	</body>
+</html>

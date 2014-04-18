@@ -298,6 +298,34 @@ body {
 	float: left;
 }
 
+/* Profile Data*/
+#profile-data {
+	margin-top: 100px;
+}
+
+.profile-page-row {
+	width: 80%;
+	height: 70px;
+	line-height: 70px;
+	margin: 15px 0px 15px 10%;
+}
+
+.profile-row-title {
+	width: 50%;
+	text-align: right;
+	float: left;
+	font-size: 30px;
+}
+
+.profile-row-data {
+	width: 50%;
+	text-align: left;
+	float: left;
+	padding-left: 20px;
+	font-size: 40px;
+	font-weight: bold;
+}
+
 /* Button Wrappers */
 #registration-buttons-wrapper {
 	text-align: right;
