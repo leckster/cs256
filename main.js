@@ -682,10 +682,10 @@ function load_workout() {
 	//blank all sets
 	for (var i = 0; i < current_workout.exercises.length; i++) {
 		var exercise = current_workout.exercises[i];
-		for (var i = 0; i < exercise.sets.length; i++) {
-			exercise.sets[i].reps = "";
-			exercise.sets[i].status = "";
-			exercise.sets[i].weight = "";
+		for (var j = 0; j < exercise.sets.length; j++) {
+			exercise.sets[j].reps = "";
+			exercise.sets[j].status = "";
+			exercise.sets[j].weight = "";
 		};
 	};
 
