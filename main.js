@@ -484,7 +484,7 @@ function main_start_workout() {
 	current_workout.date = dateString;
 	$("#content").load("log.html");
 	$("#title").html("<div class='title-top'>Date: " + current_workout.date + "</div>"
-		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
+		+"<div class='title-bottom'>" + current_workout.name + "</div>" );
 }
 
 
@@ -693,7 +693,7 @@ function load_workout() {
 		render_exercises();
 	});
 	$("#title").html("<div class='title-top'>Date: " + current_workout.date + "</div>"
-		+"<div class='title-bottom'>" + current_workout.name + "<span class='planning-mode'><input type='checkbox'> Planning Mode</span></div>" );
+		+"<div class='title-bottom'>" + current_workout.name + "</div>" );
 }
 
 //
