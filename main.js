@@ -1012,7 +1012,13 @@ function enable_workout_complete() {
 			//disable workout complete button
 			$("#workout-complete-btn").addClass("disabled");
 			return;
-		}	
+		}
+		for (var j = current_workout.exercises[i].sets.length - 1; j >= 0; j--) {
+			if(current_workout.exercises[i].sets[j].status == "" || current_workout.exercises[i].sets[j].weight == "" || current_workout.exercises[i].sets[j].sets == ""){
+				$("#workout-complete-btn").addClass("disabled");
+				return;
+			}
+		};
 	}
 	
 
