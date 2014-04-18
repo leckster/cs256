@@ -260,6 +260,7 @@ body {
 .progress-title {
 	text-align: left;
 	margin-left: 10%;
+	width: 100%;
 }
 
 #progress-drop {
@@ -406,7 +407,8 @@ body {
 	margin: 10px 0px;
 }
 
-#add-group-btn, #cancel-add-group-btn {
+#add-group-btn, #cancel-add-group-btn,
+#add-exercise-btn, #cancel-add-exercise-btn {
 	float: left;
 	width: 15%;
 	margin-left: 3%;
