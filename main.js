@@ -531,6 +531,7 @@ function load_muscle_group_select() {
 
 	$("#select_muscle_group").html(html);
 	$("#select_muscle_group").bind("change", load_exercise_select);
+
 }
 
 function load_exercise_select() {
@@ -559,6 +560,10 @@ function load_exercise_select() {
 
 	$("#select_exercise").html(html);
 	$("#select_exercise").bind("change", load_student_data);
+	
+	$("#avg").html("__");
+	$("#max").html("__");
+	$("#inc_1").html("__");
 }
 
 function load_student_data() {
@@ -729,7 +734,10 @@ function search_advanced() {
 }
 
 function load_search_results(found_workouts) {
-	var html = "";		
+	var html = "";
+	if(found_workouts.length == 0) {
+		html = "<div>No workouts found for your search.</div>";
+	}		
 	for( var i = 0; i < found_workouts.length; i++){
 		var workout = found_workouts[i];
 		html += '<div id="workout_' + workout.index + '" class="exercise-main" onclick="toggle_workout(' + workout.index + ')">'
