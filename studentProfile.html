@@ -1,12 +1,37 @@
-<div class="profile">
-	<div class="form-item">
-		<div class="form-tag progress-title">See progress for:</div>
-		<select id="progress-drop" class="form-control">
-		</select>
-		<div class="charts">
+<div class="profile container">
+	<form class="form-inline">
+		See progress for:
+		<div class="form-group">
+			<label class="sr-only" for="select_muscle_group">Muscle Group</label>
+			<select id="select_muscle_group" class="progress-drop form-control">
+				<option selected disabled>Muscle Group</option>
+			</select>
 		</div>
-		<div id="home-button-wrapper">
+		
+		<div class="form-group">
+			<label class="sr-only" for="select_exercise">Exercise</label>
+			<select id="select_exercise" class="progress-drop form-control">
+				<option selected disabled>Exercise</option>
+			</select>
+		</div>
+	</form>
+
+	<div id="profile-data">
+		<div class="profile-page-row">
+			<div class="profile-row-title">Average Weight:</div>
+			<div class="profile-row-data"><span id="avg" >__</span> lbs</div>
+		</div>
+		<div class="profile-page-row">
+			<div class="profile-row-title">Max Weight:</div>
+			<div class="profile-row-data"><span id="max" >__</span> lbs</div>
+		</div>
+		<div class="profile-page-row">
+			<div class="profile-row-title">% Change:</div>
+			<div class="profile-row-data"><span id="inc_1" >__</span>%</div>
+		</div>
+	</div>
+
+	<div id="home-button-wrapper">
 		<button id="home" class="btn btn-lg btn-danger submit-btn" onclick="load_main()">Home</button>
-		</div>
 	</div>
 </div>

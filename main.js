@@ -503,7 +503,97 @@ function load_advanced_search() {
 
 function main_view_profile() {
 	$("#title").html('<div id="t"><h1>View Profile</h1></div>');
-	$("#content").load("studentProfile.html");
+	$("#content").load("studentProfile.html", null, function(){
+		//set up musclegroup and exercise selectors.
+		load_muscle_group_select();
+	});
+}
+
+function load_muscle_group_select() {
+
+	var select_muscle_groups = [];
+
+	for (var i = 0; i < workouts.length; i++) {
+		var workout = workouts[i];
+		for (var j = 0; j < workout.exercises.length; j++) {
+			var exercise = workout.exercises[j];
+			select_muscle_groups[exercise.mg_index] = true;
+		};
+	};
+
+	var html = "<option selected disabled>Muscle Group</option>"
+	for (var i = 0; i < MUSCLE_GROUPS.length; i++) {
+		var mg = MUSCLE_GROUPS[i];
+		if(select_muscle_groups[i]) {
+			html += "<option value='" + i + "'>" + mg.name + "</option>"
+		}
+	};
+
+	$("#select_muscle_group").html(html);
+	$("#select_muscle_group").bind("change", load_exercise_select);
+}
+
+function load_exercise_select() {
+
+	var select_exercises = [];
+
+	var mg_index = $("#select_muscle_group").val();
+
+	for (var i = 0; i < workouts.length; i++) {
+		var workout = workouts[i];
+		for (var j = 0; j < workout.exercises.length; j++) {
+			var exercise = workout.exercises[j];
+			if(exercise.mg_index == mg_index){
+				select_exercises[exercise.e_index] = true;
+			}
+		};
+	};
+
+	var html = "<option selected disabled>Exercise</option>"
+	for (var i = 0; i < MUSCLE_GROUPS[mg_index].exercises.length; i++) {
+		var e = MUSCLE_GROUPS[mg_index].exercises[i];
+		if(select_exercises[i]) {
+			html += "<option value='" + i + "'>" + e.name + "</option>"
+		}
+	};
+
+	$("#select_exercise").html(html);
+	$("#select_exercise").bind("change", load_student_data);
+}
+
+function load_student_data() {
+	console.log("Load Student Data");
+
+	var mg_index = $("#select_muscle_group").val();
+	var e_index = $("#select_exercise").val();
+
+	var first = -1, last = 0, total = 0, count = 0, max = 0;
+
+	for (var i = 0; i < workouts.length; i++) {
+		var workout = workouts[i];
+		for (var j = 0; j < workout.exercises.length; j++) {
+			var exercise = workout.exercises[j];
+			if(exercise.mg_index == mg_index && exercise.e_index == e_index){
+				//go through sets and calculate: avg, max, percent increase/decrease over 1 week, 2 weeks.
+				for (var k = 0; k < exercise.sets.length; k++) {
+					var set = exercise.sets[k];
+					if(first == -1) first = set.weight;
+					if(max < set.weight) max = set.weight;
+					last = set.weight;
+					total += set.weight;
+					count++;
+				};
+			}
+		};
+	};
+
+	var avg = (total / count).toFixed(2);
+	var percent = (((last - first) / first) * 100).toFixed(2);
+
+	$("#avg").html(avg);
+	$("#max").html(max);
+	$("#inc_1").html(percent);
+
 }
 
 function main_logout() {
@@ -717,14 +807,28 @@ function e_back() {
 
 function createNewMuscleGroup() {
 	//show the input for the new muscle group name and the "Create" Button
-	var html = "";
-	$("#popover").append();
+	console.log("here");
+	var html = '<div class="add-muscle-group">'
+			+'<input id="new-muscle-group" class="form-control" type="text" placeholder="New Muscle Group">'
+			+'<button id="add-group-btn" class="btn btn-lg btn-danger" onclick="addCreatedMuscleGroup()">Add</button>'
+			+'<button id="cancel-add-group-btn" class="btn btn-lg btn-danger" onclick="cancelCreateMuscleGroup()">Cancel</button>'
+		+'</div>';
+	$("#create-new-muscle-group-div").after(html);
+	$("#create-new-muscle-group-div").addClass("hidden");
+}
+
+function cancelCreateMuscleGroup() {
+	$(".add-muscle-group").remove();
+	$("#create-new-muscle-group-div").removeClass("hidden");
 }
 
 function addCreatedMuscleGroup() {
+	if($("#new-muscle-group").val() == ""){
+		return;
+	}
 	//get name of new muscle group from input and add it as a muscle group in the MUSCLE_GROUPS array
 	var new_muscle_group = {
-		name: $("#new_mg_name").val(),
+		name: $("#new-muscle-group").val(),
 		exercises: []
 	};
 	MUSCLE_GROUPS.push(new_muscle_group);
@@ -740,15 +844,28 @@ function selectMuscleGroup(mg_index) {
 
 function createNewExercise() {
 	//show the input for the new muscle group name and the "Create" Button
-	var html = "";
-	$("#popover").append(html);
+	var html = '<div class="create-new-exercise">'
+			+'<input id="new-exercise" class="form-control" type="text" placeholder="New Exercise">'
+			+'<button id="add-exercise-btn" class="btn btn-lg btn-danger" onclick="addCreatedExercise()">Add</button>'
+			+'<button id="cancel-add-exercise-btn" class="btn btn-lg btn-danger" onclick="cancelCreateExercise()">Cancel</button>'
+		+'</div>';
+	$("#create-new-exercise-div").after(html);
+	$("#create-new-exercise-div").addClass("hidden");
+}
+
+function cancelCreateExercise() {
+	$(".create-new-exercise").remove();
+	$("#create-new-exercise-div").removeClass("hidden");
 }
 
 function addCreatedExercise() {
+	if($("#new-exercise").val() == ""){
+		return;
+	}
 	//get name of new muscle group from input and add it as a muscle group in the MUSCLE_GROUPS array
 	var muscle_group = MUSCLE_GROUPS[current_exercise.mg_index];
 	var new_exercise = {
-		name: $("#new_e_name").val()
+		name: $("#new-exercise").val()
 	}
 	muscle_group.exercises.push(new_exercise);
 	//reload #popover with getExercisesHTML
@@ -1034,7 +1151,7 @@ function getMuscleGroupsHTML() {
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>';
 	}
-	html += '<div class="muscle-group" onclick="createNewMuscleGroup()">'
+	html += '<div id="create-new-muscle-group-div" class="muscle-group" onclick="createNewMuscleGroup()">'
 			+'<div class="muscle-group-name">Create New Muscle Group</div>'
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>'
@@ -1054,7 +1171,7 @@ function getExercisesHTML(mg_index) {
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>';
 	}
-	html += '<div class="exercise" onclick="createNewExercise()">'
+	html += '<div id="create-new-exercise-div" class="exercise" onclick="createNewExercise()">'
 			+'<div class="exercise-name">Create New Exercise</div>'
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>'

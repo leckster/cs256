@@ -263,8 +263,8 @@ body {
 	width: 100%;
 }
 
-#progress-drop {
-	width: 80%;
+.progress-drop {
+	width: 40%;
 	margin-left:10%;
 }
 
@@ -297,6 +297,7 @@ body {
 	padding: 15px 15px 0px 20px;
 	float: left;
 }
+
 
 /* Profile Data*/
 #profile-data {
