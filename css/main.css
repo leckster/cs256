@@ -236,6 +236,10 @@ body {
 	margin: 10px 0px 0px 10px;	
 }
 
+#video-buttons-wrapper {
+	margin-top: 10px;
+}
+
 /* Save Workout */
 #workout_name, #workout_desc {
 	width: 100%;
@@ -462,6 +466,7 @@ body {
 
 /* Fix for mis-aligned list items */
 #popover {
+	border-top: 1px solid black;
 	height: 88%;
 	overflow: scroll;
 	clear: left;

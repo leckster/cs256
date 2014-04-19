@@ -582,10 +582,10 @@ function load_student_data() {
 				//go through sets and calculate: avg, max, percent increase/decrease over 1 week, 2 weeks.
 				for (var k = 0; k < exercise.sets.length; k++) {
 					var set = exercise.sets[k];
-					if(first == -1) first = set.weight;
-					if(max < set.weight) max = set.weight;
-					last = set.weight;
-					total += set.weight;
+					if(first == -1) first = parseInt(set.weight);
+					if(max < set.weight) max = parseInt(set.weight);
+					last = parseInt(set.weight);
+					total += parseInt(set.weight);
 					count++;
 				};
 			}
@@ -736,7 +736,7 @@ function search_advanced() {
 function load_search_results(found_workouts) {
 	var html = "";
 	if(found_workouts.length == 0) {
-		html = "<div style="margin-left: 30px;">No workouts found for your search.</div>";
+		html = '<div style="margin-left: 30px;">No workouts found for your search.</div>';
 	}		
 	for( var i = 0; i < found_workouts.length; i++){
 		var workout = found_workouts[i];
@@ -1174,7 +1174,7 @@ function getExercisesHTML(mg_index) {
 	for( var i = 0; i < MUSCLE_GROUPS[mg_index].exercises.length; i++){
 		var exercise = MUSCLE_GROUPS[mg_index].exercises[i];
 		html += '<div class="exercise" onclick="selectExercise(' + i + ')">'
-			+'<img class="video-link" src="img/video-link.png">'
+			+'<img class="video-link" src="img/video-link.png" onclick="show_video(' + i + ')">'
 			+'<div class="exercise-name">' + exercise.name + '</div>'
 			+'<img class="nav-arrow-right" src="img/nav-arrow.png">'
 		+'</div>';
@@ -1187,6 +1187,18 @@ function getExercisesHTML(mg_index) {
 			+'<button class="btn btn-lg btn-danger" id="cancel-workout-btn" onclick="e_back()">Back</button>'
 		+'</div>';
 	return html;
+}
+
+function show_video(e_index) {
+	$("#popover").html('<div id="video-wrapper">'
+			+'<div class="video-title">How To: ' + MUSCLE_GROUPS[current_exercise.mg_index].exercises[e_index].name + '</div>'
+			+'<div class="video-section"><iframe width="900" height="600" src="//www.youtube.com/embed/uVp27_BdCJM" frameborder="0" allowfullscreen></iframe></div>'
+			+'<div id="video-buttons-wrapper" class"clearfix">'
+				+'<button class="btn btn-danger video-select-btn" onclick="selectExercise(' + e_index + ')">Select Exercise</button>'
+				+'<button class="btn btn-danger video-back-btn" onclick="selectMuscleGroup(' + current_exercise.mg_index + ')">Back</button>'
+			+'</div>'
+		+'</div>');
+	event.stopPropagation()
 }
 
 function cancel_workout() {
