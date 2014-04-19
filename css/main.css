@@ -327,6 +327,11 @@ body {
 	font-weight: bold;
 }
 
+/* Video Page */
+#video-wrapper {
+	padding: 30px 40px 0px 40px;	
+}
+
 /* Button Wrappers */
 #registration-buttons-wrapper {
 	text-align: right;
@@ -442,6 +447,13 @@ body {
 	width: 15%;
 	margin-left: 3%;
 	height: 50px;	
+}
+
+.video-select-btn, .video-back-btn {
+	font-size: 22px;
+	width: 25%;
+	float: right;
+	margin-left: 25px;
 }
 
 #home {
