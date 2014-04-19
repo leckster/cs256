@@ -10,7 +10,7 @@ var MUSCLE_GROUPS = [
 			name: "Seated Row Machine"
 		},
 		{
-			name: "One Arm Dumbell Rows"
+			name: "One Arm Dumbbell Rows"
 		},
 		{
 			name: "Bent Over Rows"
@@ -47,16 +47,16 @@ var MUSCLE_GROUPS = [
 		name: "Biceps",
 		exercises: [
 		{
-			name: "Dumbell Hammer Curls"
+			name: "Dumbbell Hammer Curls"
 		},
 		{
 			name: "Preacher Curls"
 		},
 		{
-			name: "Striaght Bar Curls"
+			name: "Straight Bar Curls"
 		},
 		{
-			name: "Dumbell Curls"
+			name: "Dumbbell Curls"
 		},
 		{
 			name: "Preacher Curl Machine"
@@ -79,13 +79,13 @@ var MUSCLE_GROUPS = [
 		name: "Triceps",
 		exercises: [
 		{
-			name: "Two Hand Overhead Extenstion"
+			name: "Two Hand Overhead Extension"
 		},
 		{
-			name: "One Hand Overhead Extentsion"
+			name: "One Hand Overhead Extension"
 		},
 		{
-			name: "Dumbell Kickbacks"
+			name: "Dumbbell Kickbacks"
 		},
 		{
 			name: "One Arm Pushdown"
@@ -114,10 +114,10 @@ var MUSCLE_GROUPS = [
 			name: "Ab Bridges"
 		},
 		{
-			name: "Back Hyperextensions"
+			name: "Back Hyper-extensions"
 		},
 		{
-			name: "Side Hyperextensions"
+			name: "Side Hyper-extensions"
 		},
 		{
 			name: "Toe To Bar"
@@ -149,7 +149,7 @@ var MUSCLE_GROUPS = [
 			name: "Lunges"
 		},
 		{
-			name: "Smth Machine"
+			name: "Smith Machine"
 		},
 		{
 			name: "Wall Sits"
@@ -159,7 +159,7 @@ var MUSCLE_GROUPS = [
 		},
 		
 		{
-			name: "wo Legged Leg Extension"
+			name: "Two Legged Leg Extension"
 		}
 		]
 	},
@@ -213,13 +213,13 @@ var MUSCLE_GROUPS = [
 		name: "Chest",
 		exercises: [
 		{
-			name: "Dumbell Chest Press"
+			name: "Dumbbell Chest Press"
 		},
 		{
-			name: "Dumbell Incline Press"
+			name: "Dumbbell Incline Press"
 		},
 		{
-			name: "Dumbell Decline Press"
+			name: "Dumbbell Decline Press"
 		},
 		{
 			name: "Barbell Chest Press"
@@ -231,13 +231,13 @@ var MUSCLE_GROUPS = [
 			name: "Barbell Decline Press"
 		},
 		{
-			name: "Dumbell Flies"
+			name: "Dumbbell Flies"
 		},
 		{
-			name: "Dumbell Incline Flies"
+			name: "Dumbbell Incline Flies"
 		},
 		{
-			name: "Dumbell Decline Flies"
+			name: "Dumbbell Decline Flies"
 		},
 		{
 			name: "Fly Machine"
@@ -257,13 +257,13 @@ var MUSCLE_GROUPS = [
 		name: "Shoulders",
 		exercises: [
 		{
-			name: "Dumbell Side Raises"
+			name: "Dumbbell Side Raises"
 		},
 		{
-			name: "Dumbell Front Raises"
+			name: "Dumbbell Front Raises"
 		},
 		{
-			name: "Dumbell Shoulder Press"
+			name: "Dumbbell Shoulder Press"
 		},
 		{
 			name: "Plate Front Raises"
@@ -281,7 +281,7 @@ var MUSCLE_GROUPS = [
 			name: "Arnold Press"
 		},
 		{
-			name: "Handstand Pushups"
+			name: "Handstand Push-ups"
 		},
 		{
 			name: "Military Press Machine"
@@ -736,7 +736,7 @@ function search_advanced() {
 function load_search_results(found_workouts) {
 	var html = "";
 	if(found_workouts.length == 0) {
-		html = "<div>No workouts found for your search.</div>";
+		html = "<div style="margin-left: 30px;">No workouts found for your search.</div>";
 	}		
 	for( var i = 0; i < found_workouts.length; i++){
 		var workout = found_workouts[i];
