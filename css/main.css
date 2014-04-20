@@ -45,7 +45,7 @@ body {
 
 #title .title-bottom {
 	height: 50%;
-	line-height: 36px;
+	line-height: 40px;
 	text-align: left;
 	padding-left: 16px;
 	border-right: 1px solid black;
@@ -234,6 +234,21 @@ body {
 	height: 60px;
 	float: left;
 	margin: 10px 0px 0px 10px;	
+}
+
+#new-workout-name {
+	width: 50%;
+	height: 40px;
+}
+
+.title-bottom input, .title-bottom button {
+	margin: 0 5px;
+	display:inline-block;
+}
+
+.title-bottom button {
+	height: 40px;
+	margin-bottom: 3px;
 }
 
 #video-buttons-wrapper {

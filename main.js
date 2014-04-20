@@ -484,7 +484,7 @@ function main_start_workout() {
 	current_workout.date = dateString;
 	$("#content").load("log.html");
 	$("#title").html("<div class='title-top'>Date: " + current_workout.date + "</div>"
-		+"<div class='title-bottom'>" + current_workout.name + "</div>" );
+		+"<div class='title-bottom' onclick='edit_workout_name()'>" + current_workout.name + "</div>" );
 }
 
 
@@ -609,6 +609,15 @@ function main_logout() {
 //Load Workout
 //
 
+function edit_workout_name() {
+	$(".title-bottom").html("<div><input type='text' id='new-workout-name' value='" + current_workout.name +  "' class='form-control'><button class='btn btn-danger' onclick='save_workout_name()'>Save</button></div>");
+}
+
+function save_workout_name() {
+	current_workout.name = $("#new-workout-name").val();
+	$(".title-bottom").html(current_workout.name);
+	event.stopPropagation();
+}
 
 function toggle_workout(index) {
 	
@@ -1198,7 +1207,7 @@ function show_video(e_index) {
 				+'<button class="btn btn-danger video-back-btn" onclick="selectMuscleGroup(' + current_exercise.mg_index + ')">Back</button>'
 			+'</div>'
 		+'</div>');
-	event.stopPropagation()
+	event.stopPropagation();
 }
 
 function cancel_workout() {
@@ -1219,12 +1228,19 @@ function cancel_workout() {
 
 function workout_complete() {
 	$("#title").html('<div id="t"><h1>Save Workout</h1></div>');
-	$("#content").load("saveWorkout.html");
+	$("#content").load("saveWorkout.html", null, function(){
+		$("#workout_name").val(current_workout.name);
+	});
 }
 
 function save_workout() {
 	var name = $("#workout_name").val();
 	var desc = $("#workout_desc").val();
+
+	if(name == "" || desc == "") {
+		alert("Please enter a name and a description.");
+		return;
+	}
 
 	current_workout.index = workouts.length;
 	current_workout.name = name;
